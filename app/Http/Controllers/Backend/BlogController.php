@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Models\BlogPost;
+use App\Models\BlogComment;
 use App\Models\BlogCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -239,5 +240,68 @@ class BlogController extends Controller
         $blogPost = BlogPost::latest()->limit(3)->get();
 
         return view('frontend.blog.blog_list', compact('blog', 'blogCategory', 'blogPost'));
+    } // End Method
+
+    // #################### Blog Comment Frontend ####################
+
+    public function StoreBlogComment(Request $request)
+    {
+        $post_id = $request->blog_post_id;
+
+        BlogComment::insert([
+            'user_id' => Auth::user()->id,
+            'blog_post_id' => $post_id,
+            'parent_id' => null,
+            'subject' => $request->subject,
+            'message' => $request->message,
+            'created_at' => Carbon::now(),
+        ]);
+
+        $notification = [
+            'message' => 'Blog Comment Inserted Successfully',
+            'alert-type' => 'success',
+        ];
+
+        return redirect()->back()->with($notification);
+    } // End Method
+
+    // #################### Blog Comment Backend ####################
+
+    public function AdminBlogComment()
+    {
+        $blog_comment = BlogComment::where('parent_id', null)->latest()->get();
+
+        return view('backend.blog_comment.all_blog_comment', compact('blog_comment'));
+    } // End Method
+
+    public function AdminBlogCommentReply($id)
+    {
+        $blog_comment = BlogComment::where('id', $id)->first();
+
+        return view('backend.blog_comment.blog_comment_reply', compact('blog_comment'));
+    } // End Method
+
+    public function ReplyBlogMessage(Request $request)
+    {
+        $id = $request->id;
+        $user_id = $request->user_id;
+        $blog_post_id = $request->blog_post_id;
+
+        BlogComment::insert([
+            'user_id' => $user_id,
+            'blog_post_id' => $blog_post_id,
+            'parent_id' => $id,
+            'subject' => $request->subject,
+            'message' => $request->message,
+            'created_at' => Carbon::now(),
+        ]);
+
+        $notification = [
+            'message' => 'Blog Comment Reply Inserted Successfully',
+            'alert-type' => 'success',
+        ];
+
+        // return redirect()->back()->with($notification);
+        return redirect()->route('admin.blog.comment')->with($notification);
     } // End Method
 }
