@@ -173,6 +173,11 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/edit/blog/post/{id}', 'EditBlogPost')->name('edit.blog.post');
         Route::post('/update/blog/post', 'UpdateBlogPost')->name('update.blog.post');
         Route::get('/delete/blog/post/{id}', 'DeleteBlogPost')->name('delete.blog.post');
+
+        // Blog Comment All Route
+        Route::get('/admin/blog/comment', [BlogController::class, 'AdminBlogComment'])->name('admin.blog.comment');
+        Route::get('/admin/blog/comment/reply/{id}', [BlogController::class, 'AdminBlogCommentReply'])->name('admin.blog.comment.reply');
+        Route::post('/reply/blog/message', [BlogController::class, 'ReplyBlogMessage'])->name('reply.blog.message');
     });
 }); // End Admin Group Middleware
 
@@ -271,3 +276,4 @@ Route::post('/all/property/search', [IndexController::class, 'AllPropertySearch'
 Route::get('/blog/details/{slug}', [BlogController::class, 'BlogDetails']);
 Route::get('/blog/category/list/{id}', [BlogController::class, 'BlogCategoryList']);
 Route::get('/blog', [BlogController::class, 'BlogList'])->name('blog.list');
+Route::post('/store/blog/comment', [BlogController::class, 'StoreBlogComment'])->name('store.blog.comment');
