@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\State;
 use App\Models\Facility;
 use App\Models\Property;
+use App\Models\Schedule;
 use App\Models\MultiImage;
 use App\Models\PropertyType;
 use Illuminate\Http\Request;
@@ -55,7 +56,7 @@ class IndexController extends Controller
             return redirect()->back()->with($notification);
         } else {
             $notification = [
-                'message' => 'Please log in to your account first.',
+                'message' => 'Please log in to your account first',
                 'alert-type' => 'error',
             ];
 
@@ -218,5 +219,37 @@ class IndexController extends Controller
         $buy_property = Property::where('property_status', 'buy')->get();
 
         return view('frontend.property.property_search', compact('property', 'rent_property', 'buy_property'));
+    } // End Method
+
+    public function StoreTourSchedule(Request $request)
+    {
+        $agent_id = $request->agent_id;
+        $property_id = $request->property_id;
+
+        if (Auth::check()) {
+            Schedule::insert([
+                'user_id' => Auth::user()->id,
+                'property_id' => $property_id,
+                'agent_id' => $agent_id,
+                'tour_date' => $request->tour_date,
+                'tour_time' => $request->tour_time,
+                'tour_message' => $request->tour_message,
+                'created_at' => Carbon::now(),
+            ]);
+
+            $notification = [
+                'message' => 'Send Request Successfully',
+                'alert-type' => 'success',
+            ];
+
+            return redirect()->back()->with($notification);
+        } else {
+            $notification = [
+                'message' => 'Please log in to your account first',
+                'alert-type' => 'error',
+            ];
+
+            return redirect()->back()->with($notification);
+        }
     } // End Method
 }

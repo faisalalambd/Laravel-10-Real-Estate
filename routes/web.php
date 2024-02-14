@@ -277,3 +277,6 @@ Route::get('/blog/details/{slug}', [BlogController::class, 'BlogDetails']);
 Route::get('/blog/category/list/{id}', [BlogController::class, 'BlogCategoryList']);
 Route::get('/blog', [BlogController::class, 'BlogList'])->name('blog.list');
 Route::post('/store/blog/comment', [BlogController::class, 'StoreBlogComment'])->name('store.blog.comment');
+
+// Schedule Message Request Route
+Route::post('/store/tour/schedule', [IndexController::class, 'StoreTourSchedule'])->name('store.tour.schedule');
