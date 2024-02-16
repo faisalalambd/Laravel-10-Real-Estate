@@ -224,6 +224,11 @@ Route::middleware(['auth', 'role:agent'])->group(function () {
         // Agent Property Message
         Route::get('/agent/property/message/', 'AgentPropertyMessage')->name('agent.property.message');
         Route::get('/agent/message/details/{id}', 'AgentMessageDetails')->name('agent.message.details');
+
+        // Schedule Request Route
+        Route::get('/agent/schedule/request/', 'AgentScheduleRequest')->name('agent.schedule.request');
+        Route::get('/agent/details/schedule/{id}', 'AgentDetailsSchedule')->name('agent.details.schedule');
+        Route::post('/agent/update/schedule/', 'AgentUpdateSchedule')->name('agent.update.schedule');
     });
 }); // End Agent Group Middleware
 
