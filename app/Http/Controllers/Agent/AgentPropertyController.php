@@ -6,7 +6,9 @@ use App\Models\User;
 use App\Models\State;
 use App\Models\Facility;
 use App\Models\Property;
+use App\Models\Schedule;
 use App\Models\Amenities;
+use App\Mail\ScheduleMail;
 use App\Models\MultiImage;
 use App\Models\PackagePlan;
 use App\Models\PropertyType;
@@ -17,6 +19,7 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
@@ -26,9 +29,7 @@ class AgentPropertyController extends Controller
     public function AgentAllProperty()
     {
         $id = Auth::user()->id;
-        $property = Property::where('agent_id', $id)
-            ->latest()
-            ->get();
+        $property = Property::where('agent_id', $id)->latest()->get();
         return view('agent.property.all_property', compact('property'));
     } // End Method
 
@@ -43,9 +44,7 @@ class AgentPropertyController extends Controller
         $amenities = Amenities::latest()->get();
 
         $id = Auth::user()->id;
-        $property = User::where('role', 'agent')
-            ->where('id', $id)
-            ->first();
+        $property = User::where('role', 'agent')->where('id', $id)->first();
         $property_count = $property->credit;
         // dd($property_count);
 
@@ -160,9 +159,7 @@ class AgentPropertyController extends Controller
             'alert-type' => 'success',
         ];
 
-        return redirect()
-            ->route('agent.all.property')
-            ->with($notification);
+        return redirect()->route('agent.all.property')->with($notification);
     } // End Method
 
     public function AgentEditProperty($id)
@@ -239,9 +236,7 @@ class AgentPropertyController extends Controller
         ];
 
         // Redirecting to the 'all.property' route with the success notification
-        return redirect()
-            ->route('agent.all.property')
-            ->with($notification);
+        return redirect()->route('agent.all.property')->with($notification);
     } // End Method
 
     public function AgentUpdatePropertyThumbnail(Request $request)
@@ -261,9 +256,7 @@ class AgentPropertyController extends Controller
                 'alert-type' => 'error',
             ];
 
-            return redirect()
-                ->back()
-                ->with($notification);
+            return redirect()->back()->with($notification);
         }
 
         // Initialize an image manager and generate a unique name for the image
@@ -293,9 +286,7 @@ class AgentPropertyController extends Controller
             'alert-type' => 'success',
         ];
 
-        return redirect()
-            ->back()
-            ->with($notification);
+        return redirect()->back()->with($notification);
     } // End Method
 
     public function AgentUpdatePropertyMultiImage(Request $request)
@@ -311,9 +302,7 @@ class AgentPropertyController extends Controller
                 'alert-type' => 'error',
             ];
 
-            return redirect()
-                ->back()
-                ->with($notification);
+            return redirect()->back()->with($notification);
         }
 
         // Iterate over each element in the $imgs array
@@ -345,9 +334,7 @@ class AgentPropertyController extends Controller
             'alert-type' => 'success',
         ];
 
-        return redirect()
-            ->back()
-            ->with($notification);
+        return redirect()->back()->with($notification);
     } // End Method
 
     public function AgentDeletePropertyMultiImage($id)
@@ -368,9 +355,7 @@ class AgentPropertyController extends Controller
         ];
 
         // Redirect back to the previous page with the success notification
-        return redirect()
-            ->back()
-            ->with($notification);
+        return redirect()->back()->with($notification);
     } // End Method
 
     public function AgentStorePropertyMultiImage(Request $request)
@@ -388,9 +373,7 @@ class AgentPropertyController extends Controller
                 'alert-type' => 'error',
             ];
 
-            return redirect()
-                ->back()
-                ->with($notification);
+            return redirect()->back()->with($notification);
         }
 
         // Create an instance of the ImageManager with a new Driver
@@ -419,9 +402,7 @@ class AgentPropertyController extends Controller
             'alert-type' => 'success',
         ];
 
-        return redirect()
-            ->back()
-            ->with($notification);
+        return redirect()->back()->with($notification);
     } // End Method
 
     public function AgentUpdatePropertyFacilities(Request $request)
@@ -460,9 +441,7 @@ class AgentPropertyController extends Controller
         ];
 
         // Redirect back to the previous page with the notification message
-        return redirect()
-            ->back()
-            ->with($notification);
+        return redirect()->back()->with($notification);
     } // End Method
 
     public function AgentDetailsProperty($id)
@@ -528,9 +507,7 @@ class AgentPropertyController extends Controller
         ];
 
         // Redirect back with the notification
-        return redirect()
-            ->back()
-            ->with($notification);
+        return redirect()->back()->with($notification);
     } // End Method
 
     public function BuyPackage()
@@ -569,9 +546,7 @@ class AgentPropertyController extends Controller
             'alert-type' => 'success',
         ];
 
-        return redirect()
-            ->route('agent.all.property')
-            ->with($notification);
+        return redirect()->route('agent.all.property')->with($notification);
     } // End Method
 
     public function BuyProfessionalPlan()
@@ -605,9 +580,7 @@ class AgentPropertyController extends Controller
             'alert-type' => 'success',
         ];
 
-        return redirect()
-            ->route('agent.all.property')
-            ->with($notification);
+        return redirect()->route('agent.all.property')->with($notification);
     } // End Method
 
     public function PackageHistory()
@@ -645,5 +618,50 @@ class AgentPropertyController extends Controller
         $message_details = PropertyMessage::findOrFail($id);
 
         return view('agent.message.message_details', compact('user_message', 'message_details'));
+    } // End Method
+
+    public function AgentScheduleRequest()
+    {
+        $id = Auth::user()->id;
+
+        $user_message = Schedule::where('agent_id', $id)->get();
+
+        return view('agent.schedule.schedule_request', compact('user_message'));
+    } // End Method
+
+    public function AgentDetailsSchedule($id)
+    {
+        $schedule_details = Schedule::findOrFail($id);
+
+        return view('agent.schedule.schedule_details', compact('schedule_details'));
+    } // End Method
+
+    public function AgentUpdateSchedule(Request $request)
+    {
+        $schedule_id = $request->id;
+
+        Schedule::findOrFail($schedule_id)->update([
+            'status' => '1',
+        ]);
+
+        // Start Send Email
+
+        $send_mail = Schedule::findOrFail($schedule_id);
+
+        $data = [
+            'tour_date' => $send_mail->tour_date,
+            'tour_time' => $send_mail->tour_time,
+        ];
+
+        Mail::to($request->email)->send(new ScheduleMail($data));
+
+        // End Send Email
+
+        $notification = [
+            'message' => 'You have Confirm Schedule Successfully',
+            'alert-type' => 'success',
+        ];
+
+        return redirect()->route('agent.schedule.request')->with($notification);
     } // End Method
 }
