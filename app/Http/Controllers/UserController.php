@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Schedule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -62,9 +63,7 @@ class UserController extends Controller
             'alert-type' => 'success',
         ];
 
-        return redirect()
-            ->back()
-            ->with($notification);
+        return redirect()->back()->with($notification);
     } // End Method
 
     // Method to handle user logout
@@ -121,5 +120,15 @@ class UserController extends Controller
         ];
 
         return back()->with($notification);
+    } // End Method
+
+    public function UserScheduleRequest()
+    {
+        $id = Auth::user()->id;
+        $userData = User::find($id);
+
+        $schedule_request = Schedule::where('user_id', $id)->get();
+
+        return view('frontend.tour_schedule_message.schedule_request', compact('userData', 'schedule_request'));
     } // End Method
 }

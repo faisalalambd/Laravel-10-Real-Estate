@@ -15,6 +15,13 @@
         </li>
 
         <li>
+            <a href="{{ route('user.schedule.request') }}">
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+                Schedule Request <span class="badge badge-info">( {{ $schedule_request->count() }})</span>
+            </a>
+        </li>
+
+        <li>
             <a href="{{ route('user.compare') }}">
                 <i class="fa fa-list-alt" aria-hidden="true"></i> Compare
             </a>
@@ -22,7 +29,7 @@
 
         <li>
             <a href="{{ route('user.wishlist') }}">
-                <i class="fa fa-indent" aria-hidden="true"></i> Wishlist
+                <i class="fa fa-clipboard-list" aria-hidden="true"></i> Wishlist
             </a>
         </li>
 
