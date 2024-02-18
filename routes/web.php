@@ -14,6 +14,7 @@ use App\Http\Controllers\Backend\PropertyController;
 use App\Http\Controllers\Backend\StateController;
 use App\Http\Controllers\Backend\TestimonialController;
 use App\Http\Controllers\Backend\BlogController;
+use App\Http\Controllers\Backend\SettingController;
 
 use App\Http\Controllers\Agent\AgentPropertyController;
 
@@ -175,9 +176,15 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/delete/blog/post/{id}', 'DeleteBlogPost')->name('delete.blog.post');
 
         // Blog Comment All Route
-        Route::get('/admin/blog/comment', [BlogController::class, 'AdminBlogComment'])->name('admin.blog.comment');
-        Route::get('/admin/blog/comment/reply/{id}', [BlogController::class, 'AdminBlogCommentReply'])->name('admin.blog.comment.reply');
-        Route::post('/reply/blog/message', [BlogController::class, 'ReplyBlogMessage'])->name('reply.blog.message');
+        Route::get('/admin/blog/comment', 'AdminBlogComment')->name('admin.blog.comment');
+        Route::get('/admin/blog/comment/reply/{id}', 'AdminBlogCommentReply')->name('admin.blog.comment.reply');
+        Route::post('/reply/blog/message', 'ReplyBlogMessage')->name('reply.blog.message');
+    });
+
+    // SMTP Setting  All Route
+    Route::controller(SettingController::class)->group(function () {
+        Route::get('/smtp/setting', 'SmtpSetting')->name('smtp.setting');
+        Route::post('/update/smtp/setting', 'UpdateSmtpSetting')->name('update.smtp.setting');
     });
 }); // End Admin Group Middleware
 
