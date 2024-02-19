@@ -90,16 +90,50 @@
         $(document).ready(function() {
             $('#myForm').validate({
                 rules: {
-                    amenity_name: {
+                    mail_mailer: {
+                        required: true,
+                    },
+                    mail_host: {
+                        required: true,
+                    },
+                    mail_port: {
+                        required: true,
+                    },
+                    mail_username: {
+                        required: true,
+                    },
+                    mail_password: {
+                        required: true,
+                    },
+                    mail_encryption: {
+                        required: true,
+                    },
+                    mail_from_address: {
                         required: true,
                     },
                 },
                 messages: {
-                    amenity_name: {
-                        required: 'Please Enter Amenity Name',
+                    mail_mailer: {
+                        required: 'Please Enter Mail Mailer',
                     },
-
-
+                    mail_host: {
+                        required: 'Please Enter Mail Host',
+                    },
+                    mail_port: {
+                        required: 'Please Enter Mail Port',
+                    },
+                    mail_username: {
+                        required: 'Please Enter Mail Username',
+                    },
+                    mail_password: {
+                        required: 'Please Enter Mail Password',
+                    },
+                    mail_encryption: {
+                        required: 'Please Enter Mail Encryption',
+                    },
+                    mail_from_address: {
+                        required: 'Please Enter Mail From Address',
+                    },
                 },
                 errorElement: 'span',
                 errorPlacement: function(error, element) {

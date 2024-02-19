@@ -17,6 +17,7 @@
         <ul class="nav">
 
             <li class="nav-item nav-category">Main</li>
+
             <li class="nav-item">
                 <a href="{{ route('admin.dashboard') }}" class="nav-link">
                     <i class="link-icon" data-feather="box"></i>
@@ -25,7 +26,7 @@
             </li>
 
 
-            <li class="nav-item nav-category">Real Estate</li>
+            <li class="nav-item nav-category">Property</li>
 
             <li class="nav-item">
                 <a href="{{ route('all.propertyType') }}" class="nav-link">
@@ -55,12 +56,18 @@
                 </a>
             </li>
 
+
+            <li class="nav-item nav-category">Package</li>
+
             <li class="nav-item">
                 <a href="{{ route('admin.package.history') }}" class="nav-link">
                     <i class="link-icon" data-feather="hash"></i>
                     <span class="link-title">Package History</span>
                 </a>
             </li>
+
+
+            <li class="nav-item nav-category">Message</li>
 
             <li class="nav-item">
                 <a href="{{ route('admin.property.message') }}" class="nav-link">
@@ -77,7 +84,7 @@
             </li>
 
 
-            <li class="nav-item nav-category">User All Function</li>
+            <li class="nav-item nav-category">Agent</li>
 
             <li class="nav-item">
                 <a href="{{ route('all.agent') }}" class="nav-link">
@@ -85,6 +92,9 @@
                     <span class="link-title">Manage Agent</span>
                 </a>
             </li>
+
+
+            <li class="nav-item nav-category">Blog</li>
 
             <li class="nav-item">
                 <a href="{{ route('all.blog.category') }}" class="nav-link">
@@ -107,10 +117,20 @@
                 </a>
             </li>
 
+
+            <li class="nav-item nav-category">Setting</li>
+
             <li class="nav-item">
                 <a href="{{ route('smtp.setting') }}" class="nav-link">
                     <i class="link-icon" data-feather="hash"></i>
                     <span class="link-title">SMTP Setting</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="{{ route('site.setting') }}" class="nav-link">
+                    <i class="link-icon" data-feather="hash"></i>
+                    <span class="link-title">Site Setting</span>
                 </a>
             </li>
 

@@ -17,7 +17,8 @@
         <li>
             <a href="{{ route('user.schedule.request') }}">
                 <i class="fa fa-envelope" aria-hidden="true"></i>
-                Schedule Request <span class="badge badge-info">( {{ $schedule_request->count() }})</span>
+                Schedule Request
+                {{-- <span class="badge badge-info">( {{ $schedule_request->count() }})</span> --}}
             </a>
         </li>
 

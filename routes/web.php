@@ -182,10 +182,15 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::post('/reply/blog/message', 'ReplyBlogMessage')->name('reply.blog.message');
     });
 
-    // SMTP Setting  All Route
+    // Setting All Route
     Route::controller(SettingController::class)->group(function () {
+        // SMTP Setting All Route
         Route::get('/smtp/setting', 'SmtpSetting')->name('smtp.setting');
         Route::post('/update/smtp/setting', 'UpdateSmtpSetting')->name('update.smtp.setting');
+
+        // Site Setting All Route
+        Route::get('/site/setting', 'SiteSetting')->name('site.setting');
+        Route::post('/update/site/setting', 'UpdateSiteSetting')->name('update.site.setting');
     });
 }); // End Admin Group Middleware
 

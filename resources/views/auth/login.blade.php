@@ -1,167 +1,175 @@
 @extends('frontend.frontend_dashboard')
 @section('main')
-    <!--Page Title-->
-    <section class="page-title-two bg-color-1 centred">
 
-        <div class="pattern-layer">
-            <div class="pattern-1" style="background-image: url({{ asset('frontend/assets/images/shape/shape-9.png') }});">
-            </div>
-            <div class="pattern-2" style="background-image: url({{ asset('frontend/assets/images/shape/shape-10.png') }});">
-            </div>
+@section('title')
+    Sign In | Real Estate
+@endsection
+
+
+<!--Page Title-->
+<section class="page-title-two bg-color-1 centred">
+
+    <div class="pattern-layer">
+        <div class="pattern-1" style="background-image: url({{ asset('frontend/assets/images/shape/shape-9.png') }});">
         </div>
-
-
-        <div class="auto-container">
-            <div class="content-box clearfix">
-                <h1>Sign In</h1>
-                <ul class="bread-crumb clearfix">
-                    <li><a href="{{ url('/') }}">Home</a></li>
-                    <li>Sign In</li>
-                </ul>
-            </div>
+        <div class="pattern-2" style="background-image: url({{ asset('frontend/assets/images/shape/shape-10.png') }});">
         </div>
-
-    </section>
-    <!--End Page Title-->
+    </div>
 
 
-    <!-- ragister-section -->
-    <section class="ragister-section centred sec-pad">
+    <div class="auto-container">
+        <div class="content-box clearfix">
+            <h1>Sign In</h1>
+            <ul class="bread-crumb clearfix">
+                <li><a href="{{ url('/') }}">Home</a></li>
+                <li>Sign In</li>
+            </ul>
+        </div>
+    </div>
 
-        <div class="auto-container">
+</section>
+<!--End Page Title-->
 
-            <div class="row clearfix">
 
-                <div class="col-xl-8 col-lg-12 col-md-12 offset-xl-2 big-column">
+<!-- ragister-section -->
+<section class="ragister-section centred sec-pad">
 
-                    <div class="tabs-box">
+    <div class="auto-container">
 
-                        <div class="tab-btn-box">
-                            <ul class="tab-btns tab-buttons centred clearfix">
-                                <li class="tab-btn active-btn" data-tab="#tab-1">Login</li>
-                                <li class="tab-btn" data-tab="#tab-2">Register</li>
-                            </ul>
-                        </div>
+        <div class="row clearfix">
 
-                        <div class="tabs-content">
+            <div class="col-xl-8 col-lg-12 col-md-12 offset-xl-2 big-column">
 
-                            {{-- Login Tab --}}
-                            <div class="tab active-tab" id="tab-1">
+                <div class="tabs-box">
 
-                                <div class="inner-box">
+                    <div class="tab-btn-box">
+                        <ul class="tab-btns tab-buttons centred clearfix">
+                            <li class="tab-btn active-btn" data-tab="#tab-1">Login</li>
+                            <li class="tab-btn" data-tab="#tab-2">Register</li>
+                        </ul>
+                    </div>
 
-                                    <form action="{{ route('login') }}" method="post" class="default-form">
-                                        @csrf
+                    <div class="tabs-content">
 
-                                        <div class="form-group">
-                                            <label>Email / Name / Phone </label>
-                                            <input type="text" name="login" id="login" required="">
-                                        </div>
+                        {{-- Login Tab --}}
+                        <div class="tab active-tab" id="tab-1">
 
-                                        <div class="form-group">
-                                            <label>Password</label>
-                                            <input type="password" name="password" id="password" required="">
-                                        </div>
+                            <div class="inner-box">
 
-                                        <div class="form-group message-btn">
-                                            <button type="submit" class="theme-btn btn-one">Sign in</button>
-                                        </div>
+                                <form action="{{ route('login') }}" method="post" class="default-form">
+                                    @csrf
 
-                                    </form>
+                                    <div class="form-group">
+                                        <label>Email / Name / Phone </label>
+                                        <input type="text" name="login" id="login" required="">
+                                    </div>
 
-                                </div>
+                                    <div class="form-group">
+                                        <label>Password</label>
+                                        <input type="password" name="password" id="password" required="">
+                                    </div>
+
+                                    <div class="form-group message-btn">
+                                        <button type="submit" class="theme-btn btn-one">Sign in</button>
+                                    </div>
+
+                                </form>
 
                             </div>
-                            {{-- End: Login Tab --}}
-
-
-                            {{-- Register Tab --}}
-                            <div class="tab" id="tab-2">
-
-                                <div class="inner-box">
-
-                                    <form action="{{ route('register') }}" method="post" class="default-form">
-                                        @csrf
-
-                                        <div class="form-group">
-                                            <label>User Name</label>
-                                            <input type="text" name="name" id="name" required="">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label>Email Address</label>
-                                            <input type="email" name="email" id="email" required="">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label>Password</label>
-                                            <input type="password" name="password" id="password" required="">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label>Confirm Password</label>
-                                            <input type="password" name="password_confirmation" id="password_confirmation"
-                                                required="">
-                                        </div>
-
-                                        <div class="form-group message-btn">
-                                            <button type="submit" class="theme-btn btn-one">Register</button>
-                                        </div>
-
-                                    </form>
-
-                                </div>
-
-                            </div>
-                            {{-- End: Register Tab --}}
 
                         </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-    <!-- ragister-section end -->
+                        {{-- End: Login Tab --}}
 
 
-    <!-- subscribe-section -->
-    <section class="subscribe-section bg-color-3">
+                        {{-- Register Tab --}}
+                        <div class="tab" id="tab-2">
 
-        <div class="pattern-layer" style="background-image: url(assets/images/shape/shape-2.png);"></div>
+                            <div class="inner-box">
 
+                                <form action="{{ route('register') }}" method="post" class="default-form">
+                                    @csrf
 
-        <div class="auto-container">
+                                    <div class="form-group">
+                                        <label>User Name</label>
+                                        <input type="text" name="name" id="name" required="">
+                                    </div>
 
-            <div class="row clearfix">
+                                    <div class="form-group">
+                                        <label>Email Address</label>
+                                        <input type="email" name="email" id="email" required="">
+                                    </div>
 
-                <div class="col-lg-6 col-md-6 col-sm-12 text-column">
-                    <div class="text">
-                        <span>Subscribe</span>
-                        <h2>Sign Up To Our Newsletter To Get The Latest News And Offers.</h2>
-                    </div>
-                </div>
+                                    <div class="form-group">
+                                        <label>Password</label>
+                                        <input type="password" name="password" id="password" required="">
+                                    </div>
 
+                                    <div class="form-group">
+                                        <label>Confirm Password</label>
+                                        <input type="password" name="password_confirmation" id="password_confirmation"
+                                            required="">
+                                    </div>
 
-                <div class="col-lg-6 col-md-6 col-sm-12 form-column">
-                    <div class="form-inner">
-                        <form action="contact.html" method="post" class="subscribe-form">
-                            <div class="form-group">
-                                <input type="email" name="email" placeholder="Enter your email" required="">
-                                <button type="submit">Subscribe Now</button>
+                                    <div class="form-group message-btn">
+                                        <button type="submit" class="theme-btn btn-one">Register</button>
+                                    </div>
+
+                                </form>
+
                             </div>
-                        </form>
+
+                        </div>
+                        {{-- End: Register Tab --}}
+
                     </div>
+
                 </div>
 
             </div>
 
         </div>
 
-    </section>
-    <!-- subscribe-section end -->
+    </div>
+
+</section>
+<!-- ragister-section end -->
+
+
+<!-- subscribe-section -->
+<section class="subscribe-section bg-color-3">
+
+    <div class="pattern-layer" style="background-image: url(assets/images/shape/shape-2.png);"></div>
+
+
+    <div class="auto-container">
+
+        <div class="row clearfix">
+
+            <div class="col-lg-6 col-md-6 col-sm-12 text-column">
+                <div class="text">
+                    <span>Subscribe</span>
+                    <h2>Sign Up To Our Newsletter To Get The Latest News And Offers.</h2>
+                </div>
+            </div>
+
+
+            <div class="col-lg-6 col-md-6 col-sm-12 form-column">
+                <div class="form-inner">
+                    <form action="contact.html" method="post" class="subscribe-form">
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Enter your email" required="">
+                            <button type="submit">Subscribe Now</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- subscribe-section end -->
+
+
 @endsection
