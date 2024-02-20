@@ -2,7 +2,7 @@
 @section('admin')
 
 @section('admin_title')
-    Admin Change Password | Admin Panel | Real Estate
+    Admin Change Password
 @endsection
 
 

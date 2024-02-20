@@ -2,7 +2,7 @@
 @section('main')
 
 @section('title')
-    {{ $state_breadcrumb_state->state_name }} Property | Real Estate
+    {{ $state_breadcrumb_state->state_name }} Property
 @endsection
 
 

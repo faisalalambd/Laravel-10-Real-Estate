@@ -11,7 +11,7 @@
     <meta name="keywords"
         content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
-    <title>@yield('admin_title')</title>
+    <title>@yield('admin_title') | Admin Panel | Real Estate</title>
 
 
     <!-- Fonts -->

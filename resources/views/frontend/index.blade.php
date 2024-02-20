@@ -2,7 +2,7 @@
 @section('main')
 
 @section('title')
-    Home | Real Estate
+    Home
 @endsection
 
 

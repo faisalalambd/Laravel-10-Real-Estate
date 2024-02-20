@@ -2,7 +2,7 @@
 @section('main')
 
 @section('title')
-    Buy Property | Real Estate
+    Buy Property
 @endsection
 
 

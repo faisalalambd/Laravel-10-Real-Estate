@@ -1,50 +1,54 @@
 @extends('admin.admin_dashboard')
 @section('admin')
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+@section('admin_title')
+    Edit Property Type
+@endsection
 
 
-    <div class="page-content">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
-        <nav class="page-breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#!">Form</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Edit Property Type</li>
-            </ol>
-        </nav>
 
-        <div class="row profile-body">
+<div class="page-content">
 
-            <div class="col-md-12 col-xl-12 middle-wrapper">
+    <nav class="page-breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#!">Form</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Edit Property Type</li>
+        </ol>
+    </nav>
 
-                <div class="row">
+    <div class="row profile-body">
 
-                    <div class="card">
+        <div class="col-md-12 col-xl-12 middle-wrapper">
 
-                        <div class="card-body">
+            <div class="row">
 
-                            <form id="myForm" method="POST" action="{{ route('update.propertyType') }}"
-                                class="forms-sample">
-                                @csrf
+                <div class="card">
 
-                                <input type="hidden" name="id" value="{{ $propertyTypes->id }}">
+                    <div class="card-body">
 
-                                <div class="form-group mb-3">
-                                    <label class="form-label">Property Type Name</label>
-                                    <input type="text" name="type_name" class="form-control"
-                                        value="{{ $propertyTypes->type_name }}">
-                                </div>
+                        <form id="myForm" method="POST" action="{{ route('update.propertyType') }}"
+                            class="forms-sample">
+                            @csrf
 
-                                <div class="form-group mb-3">
-                                    <label class="form-label">Property Type Icon</label>
-                                    <input type="text" name="type_icon" class="form-control"
-                                        value="{{ $propertyTypes->type_icon }}">
-                                </div>
+                            <input type="hidden" name="id" value="{{ $propertyTypes->id }}">
 
-                                <button type="submit" class="btn btn-outline-primary me-2">Update Changes</button>
+                            <div class="form-group mb-3">
+                                <label class="form-label">Property Type Name</label>
+                                <input type="text" name="type_name" class="form-control"
+                                    value="{{ $propertyTypes->type_name }}">
+                            </div>
 
-                            </form>
+                            <div class="form-group mb-3">
+                                <label class="form-label">Property Type Icon</label>
+                                <input type="text" name="type_icon" class="form-control"
+                                    value="{{ $propertyTypes->type_icon }}">
+                            </div>
 
-                        </div>
+                            <button type="submit" class="btn btn-outline-primary me-2">Update Changes</button>
+
+                        </form>
 
                     </div>
 
@@ -56,37 +60,41 @@
 
     </div>
 
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('#myForm').validate({
-                rules: {
-                    type_name: {
-                        required: true,
-                    },
-                    type_icon: {
-                        required: true,
-                    },
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#myForm').validate({
+            rules: {
+                type_name: {
+                    required: true,
                 },
-                messages: {
-                    type_name: {
-                        required: 'Please Enter Property Type Name',
-                    },
-                    type_icon: {
-                        required: 'Please Enter Property Type Icon',
-                    },
+                type_icon: {
+                    required: true,
                 },
-                errorElement: 'span',
-                errorPlacement: function(error, element) {
-                    error.addClass('invalid-feedback');
-                    element.closest('.form-group').append(error);
+            },
+            messages: {
+                type_name: {
+                    required: 'Please Enter Property Type Name',
                 },
-                highlight: function(element, errorClass, validClass) {
-                    $(element).addClass('is-invalid');
+                type_icon: {
+                    required: 'Please Enter Property Type Icon',
                 },
-                unhighlight: function(element, errorClass, validClass) {
-                    $(element).removeClass('is-invalid');
-                },
-            });
+            },
+            errorElement: 'span',
+            errorPlacement: function(error, element) {
+                error.addClass('invalid-feedback');
+                element.closest('.form-group').append(error);
+            },
+            highlight: function(element, errorClass, validClass) {
+                $(element).addClass('is-invalid');
+            },
+            unhighlight: function(element, errorClass, validClass) {
+                $(element).removeClass('is-invalid');
+            },
         });
-    </script>
+    });
+</script>
+
+
 @endsection

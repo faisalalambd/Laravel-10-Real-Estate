@@ -2,7 +2,7 @@
 @section('main')
 
 @section('title')
-    Sign In | Real Estate
+    Sign In
 @endsection
 
 

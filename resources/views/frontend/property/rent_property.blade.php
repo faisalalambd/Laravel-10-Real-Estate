@@ -2,7 +2,7 @@
 @section('main')
 
 @section('title')
-    Rent Property | Real Estate
+    Rent Property
 @endsection
 
 

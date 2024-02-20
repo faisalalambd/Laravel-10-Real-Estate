@@ -2,7 +2,7 @@
 @section('main')
 
 @section('title')
-    User Profile | Real Estate
+    User Profile
 @endsection
 
 

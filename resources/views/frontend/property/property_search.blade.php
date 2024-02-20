@@ -2,7 +2,7 @@
 @section('main')
 
 @section('title')
-    Property Search | Real Estate
+    Property Search
 @endsection
 
 

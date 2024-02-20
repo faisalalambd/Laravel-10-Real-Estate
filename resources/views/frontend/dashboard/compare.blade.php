@@ -2,7 +2,7 @@
 @section('main')
 
 @section('title')
-    Compare Properties | Real Estate
+    Compare Properties
 @endsection
 
 

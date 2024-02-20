@@ -2,7 +2,7 @@
 @section('main')
 
 @section('title')
-    {{ $blog_details->post_title }} | Real Estate
+    {{ $blog_details->post_title }}
 @endsection
 
 

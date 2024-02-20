@@ -1,8 +1,5 @@
 @php
-    $property = App\Models\Property::where('status', '1')
-        ->where('hot', '1')
-        ->limit(3)
-        ->get();
+    $property = App\Models\Property::where('status', '1')->where('hot', '1')->limit(3)->get();
 @endphp
 
 <section class="deals-section sec-pad">

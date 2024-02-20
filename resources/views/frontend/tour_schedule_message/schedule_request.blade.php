@@ -2,7 +2,7 @@
 @section('main')
 
 @section('title')
-    Schedule Request | Real Estate
+    Schedule Request
 @endsection
 
 

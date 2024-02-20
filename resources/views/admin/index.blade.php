@@ -2,7 +2,7 @@
 @section('admin')
 
 @section('admin_title')
-    Admin Dashboard | Admin Panel | Real Estate
+    Admin Dashboard
 @endsection
 
 

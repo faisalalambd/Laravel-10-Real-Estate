@@ -2,7 +2,7 @@
 @section('main')
 
 @section('title')
-    {{ $breadcrumb_category->category_name }} | Real Estate
+    {{ $breadcrumb_category->category_name }}
 @endsection
 
 

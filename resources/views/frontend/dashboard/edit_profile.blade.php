@@ -2,7 +2,7 @@
 @section('main')
 
 @section('title')
-    Edit Profile | Real Estate
+    Edit Profile
 @endsection
 
 

@@ -1,7 +1,5 @@
 @php
-    $property_type = App\Models\PropertyType::latest()
-        ->limit(5)
-        ->get();
+    $property_type = App\Models\PropertyType::latest()->limit(5)->get();
 @endphp
 
 

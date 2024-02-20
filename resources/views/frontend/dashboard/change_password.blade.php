@@ -2,7 +2,7 @@
 @section('main')
 
 @section('title')
-    Change Password | Real Estate
+    Change Password
 @endsection
 
 

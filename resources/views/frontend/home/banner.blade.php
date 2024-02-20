@@ -36,7 +36,8 @@
 
                                 <div class="top-search">
 
-                                    <form action="{{ route('buy.property.search') }}" method="post" class="search-form">
+                                    <form action="{{ route('buy.property.search') }}" method="post"
+                                        class="search-form">
 
                                         @csrf
 
@@ -110,7 +111,8 @@
 
                                 <div class="top-search">
 
-                                    <form action="{{ route('rent.property.search') }}" method="post" class="search-form">
+                                    <form action="{{ route('rent.property.search') }}" method="post"
+                                        class="search-form">
 
                                         @csrf
 

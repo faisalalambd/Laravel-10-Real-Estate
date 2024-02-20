@@ -2,7 +2,7 @@
 @section('main')
 
 @section('title')
-    Blog | Real Estate
+    Blog
 @endsection
 
 

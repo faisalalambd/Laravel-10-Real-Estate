@@ -11,7 +11,7 @@
     <meta name="keywords"
         content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
-    <title>Agent Panel - Real Estate</title>
+    <title>@yield('agent_title') | Agent Panel | Real Estate</title>
 
 
     <!-- Fonts -->

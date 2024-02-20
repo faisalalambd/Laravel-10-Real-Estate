@@ -2,7 +2,7 @@
 @section('main')
 
 @section('title')
-    {{ $property_type_breadcrumb->type_name }} Type Property | Real Estate
+    {{ $property_type_breadcrumb->type_name }} Type Property
 @endsection
 
 

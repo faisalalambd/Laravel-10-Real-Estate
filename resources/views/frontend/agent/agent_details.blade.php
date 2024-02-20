@@ -2,7 +2,7 @@
 @section('main')
 
 @section('title')
-    {{ $agent->name }} | Real Estate
+    {{ $agent->name }}
 @endsection
 
 

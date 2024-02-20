@@ -2,7 +2,7 @@
 @section('main')
 
 @section('title')
-    Wishlist | Real Estate
+    Wishlist
 @endsection
 
 

@@ -30,7 +30,8 @@
 
             <div class="items-container row clearfix">
 
-                <div class="col-lg-4 col-md-6 col-sm-12 masonry-item small-column all illustration brand marketing software">
+                <div
+                    class="col-lg-4 col-md-6 col-sm-12 masonry-item small-column all illustration brand marketing software">
 
                     <div class="place-block-one">
 
@@ -61,7 +62,8 @@
                 </div>
 
 
-                <div class="col-lg-4 col-md-6 col-sm-12 masonry-item small-column all brand illustration print software logo">
+                <div
+                    class="col-lg-4 col-md-6 col-sm-12 masonry-item small-column all brand illustration print software logo">
 
                     <div class="place-block-one">
 
