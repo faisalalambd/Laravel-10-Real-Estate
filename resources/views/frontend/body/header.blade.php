@@ -130,7 +130,7 @@
 
                                 <li><a href="{{ route('blog.list') }}"><span>Blog</span></a></li>
 
-                                <li><a href="#"><span>Contact</span></a></li>
+                                <li><a href="{{ route('contact.us') }}"><span>Contact</span></a></li>
 
                                 <li>
                                     <style>

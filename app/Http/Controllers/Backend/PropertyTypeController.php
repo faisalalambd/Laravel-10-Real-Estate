@@ -38,9 +38,7 @@ class PropertyTypeController extends Controller
             'alert-type' => 'success',
         ];
 
-        return redirect()
-            ->route('all.propertyType')
-            ->with($notification);
+        return redirect()->route('all.propertyType')->with($notification);
     } // End Method
 
     // Method to display the form for editing a property type
@@ -69,9 +67,7 @@ class PropertyTypeController extends Controller
             'alert-type' => 'success',
         ];
 
-        return redirect()
-            ->route('all.propertyType')
-            ->with($notification);
+        return redirect()->route('all.propertyType')->with($notification);
     } // End Method
 
     // Method to delete a property type from the database
@@ -86,8 +82,6 @@ class PropertyTypeController extends Controller
             'alert-type' => 'success',
         ];
 
-        return redirect()
-            ->back()
-            ->with($notification);
+        return redirect()->back()->with($notification);
     } // End Method
 }

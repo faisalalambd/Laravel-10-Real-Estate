@@ -41,10 +41,7 @@ class PropertyController extends Controller
         $amenities = Amenities::latest()->get();
 
         // Fetch the latest active User records with the role 'agent' from the database
-        $activeAgent = User::where('status', 'active')
-            ->where('role', 'agent')
-            ->latest()
-            ->get();
+        $activeAgent = User::where('status', 'active')->where('role', 'agent')->latest()->get();
 
         // Return the view 'backend.property.add_property' with the fetched data as compact variables
         return view('backend.property.add_property', compact('propertyType', 'amenities', 'activeAgent', 'propertyState'));
@@ -146,9 +143,7 @@ class PropertyController extends Controller
             'alert-type' => 'success',
         ];
 
-        return redirect()
-            ->route('all.property')
-            ->with($notification);
+        return redirect()->route('all.property')->with($notification);
     } // End Method
 
     public function EditProperty($id)
@@ -165,10 +160,7 @@ class PropertyController extends Controller
         $amenities = Amenities::latest()->get();
 
         // Get active users with the role 'agent'
-        $activeAgent = User::where('status', 'active')
-            ->where('role', 'agent')
-            ->latest()
-            ->get();
+        $activeAgent = User::where('status', 'active')->where('role', 'agent')->latest()->get();
 
         // Get multiple images associated with the property
         $multiImage = MultiImage::where('property_id', $id)->get();
@@ -231,9 +223,7 @@ class PropertyController extends Controller
         ];
 
         // Redirecting to the 'all.property' route with the success notification
-        return redirect()
-            ->route('all.property')
-            ->with($notification);
+        return redirect()->route('all.property')->with($notification);
     } // End Method
 
     public function UpdatePropertyThumbnail(Request $request)
@@ -253,9 +243,7 @@ class PropertyController extends Controller
                 'alert-type' => 'error',
             ];
 
-            return redirect()
-                ->back()
-                ->with($notification);
+            return redirect()->back()->with($notification);
         }
 
         // Initialize an image manager and generate a unique name for the image
@@ -285,9 +273,7 @@ class PropertyController extends Controller
             'alert-type' => 'success',
         ];
 
-        return redirect()
-            ->back()
-            ->with($notification);
+        return redirect()->back()->with($notification);
     } // End Method
 
     public function UpdatePropertyMultiImage(Request $request)
@@ -303,9 +289,7 @@ class PropertyController extends Controller
                 'alert-type' => 'error',
             ];
 
-            return redirect()
-                ->back()
-                ->with($notification);
+            return redirect()->back()->with($notification);
         }
 
         // Iterate over each element in the $imgs array
@@ -337,9 +321,7 @@ class PropertyController extends Controller
             'alert-type' => 'success',
         ];
 
-        return redirect()
-            ->back()
-            ->with($notification);
+        return redirect()->back()->with($notification);
     } // End Method
 
     public function DeletePropertyMultiImage($id)
@@ -360,9 +342,7 @@ class PropertyController extends Controller
         ];
 
         // Redirect back to the previous page with the success notification
-        return redirect()
-            ->back()
-            ->with($notification);
+        return redirect()->back()->with($notification);
     } // End Method
 
     public function StorePropertyMultiImage(Request $request)
@@ -380,9 +360,7 @@ class PropertyController extends Controller
                 'alert-type' => 'error',
             ];
 
-            return redirect()
-                ->back()
-                ->with($notification);
+            return redirect()->back()->with($notification);
         }
 
         // Create an instance of the ImageManager with a new Driver
@@ -411,9 +389,7 @@ class PropertyController extends Controller
             'alert-type' => 'success',
         ];
 
-        return redirect()
-            ->back()
-            ->with($notification);
+        return redirect()->back()->with($notification);
     } // End Method
 
     public function UpdatePropertyFacilities(Request $request)
@@ -452,9 +428,7 @@ class PropertyController extends Controller
         ];
 
         // Redirect back to the previous page with the notification message
-        return redirect()
-            ->back()
-            ->with($notification);
+        return redirect()->back()->with($notification);
     } // End Method
 
     public function DeleteProperty($id)
@@ -495,9 +469,7 @@ class PropertyController extends Controller
         ];
 
         // Redirect back with the notification
-        return redirect()
-            ->back()
-            ->with($notification);
+        return redirect()->back()->with($notification);
     } // End Method
 
     public function DetailsProperty($id)
@@ -512,10 +484,7 @@ class PropertyController extends Controller
         $amenities = Amenities::latest()->get();
 
         // Retrieve all active agents in the latest order, filtered by 'status' and 'role'
-        $activeAgent = User::where('status', 'active')
-            ->where('role', 'agent')
-            ->latest()
-            ->get();
+        $activeAgent = User::where('status', 'active')->where('role', 'agent')->latest()->get();
 
         // Retrieve all multi-images associated with the given property ID
         $multiImage = MultiImage::where('property_id', $id)->get();
@@ -548,9 +517,7 @@ class PropertyController extends Controller
         ];
 
         // Redirect to the 'all.property' route with the notification message
-        return redirect()
-            ->route('all.property')
-            ->with($notification);
+        return redirect()->route('all.property')->with($notification);
     } // End Method
 
     public function ActiveProperty(Request $request)
@@ -570,9 +537,7 @@ class PropertyController extends Controller
         ];
 
         // Redirecting to the 'all.property' route with the notification data
-        return redirect()
-            ->route('all.property')
-            ->with($notification);
+        return redirect()->route('all.property')->with($notification);
     } // End Method
 
     public function AdminPackageHistory()

@@ -79,9 +79,7 @@ class AdminController extends Controller
             'alert-type' => 'success',
         ];
 
-        return redirect()
-            ->back()
-            ->with($notification);
+        return redirect()->back()->with($notification);
     } // End Method
 
     // Method to display the admin change password view
@@ -159,9 +157,7 @@ class AdminController extends Controller
             'alert-type' => 'success',
         ];
 
-        return redirect()
-            ->route('all.agent')
-            ->with($notification);
+        return redirect()->route('all.agent')->with($notification);
     } // End Method
 
     // Method to fetch and display the information of a specific agent for editing
@@ -189,9 +185,7 @@ class AdminController extends Controller
             'alert-type' => 'success',
         ];
 
-        return redirect()
-            ->route('all.agent')
-            ->with($notification);
+        return redirect()->route('all.agent')->with($notification);
     } // End Method
 
     // Method to delete a specific agent from the database
@@ -205,9 +199,7 @@ class AdminController extends Controller
             'alert-type' => 'success',
         ];
 
-        return redirect()
-            ->back()
-            ->with($notification);
+        return redirect()->back()->with($notification);
     } // End Method
 
     // Method to change the status of an agent based on the request data

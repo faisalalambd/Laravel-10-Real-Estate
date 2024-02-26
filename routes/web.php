@@ -15,6 +15,7 @@ use App\Http\Controllers\Backend\StateController;
 use App\Http\Controllers\Backend\TestimonialController;
 use App\Http\Controllers\Backend\BlogController;
 use App\Http\Controllers\Backend\SettingController;
+use App\Http\Controllers\Backend\ContactUsController;
 
 use App\Http\Controllers\Agent\AgentPropertyController;
 
@@ -192,6 +193,12 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/site/setting', 'SiteSetting')->name('site.setting');
         Route::post('/update/site/setting', 'UpdateSiteSetting')->name('update.site.setting');
     });
+
+    // Contact Us Message All Route
+    Route::controller(ContactUsController::class)->group(function () {
+        Route::get('/contact/us/message', 'ContactUsMessage')->name('contact.us.message');
+        Route::get('/delete/contact/us/message/{id}', 'DeleteContactUsMessage')->name('delete.contact.us.message');
+    });
 }); // End Admin Group Middleware
 
 Route::get('/admin/login', [AdminController::class, 'AdminLogin'])
@@ -298,3 +305,7 @@ Route::post('/store/blog/comment', [BlogController::class, 'StoreBlogComment'])-
 
 // Schedule Message Request Route
 Route::post('/store/tour/schedule', [IndexController::class, 'StoreTourSchedule'])->name('store.tour.schedule');
+
+// Contact Us Route
+Route::get('/contact/us', [ContactUsController::class, 'ContactUs'])->name('contact.us');
+Route::post('/store/contact/us/message', [ContactUsController::class, 'StoreContactUsMessage'])->name('store.contact.us');

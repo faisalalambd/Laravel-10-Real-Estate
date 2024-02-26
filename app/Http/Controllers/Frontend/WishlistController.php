@@ -14,9 +14,7 @@ class WishlistController extends Controller
     public function AddToWishList(Request $request, $property_id)
     {
         if (Auth::check()) {
-            $exists = Wishlist::where('user_id', Auth::id())
-                ->where('property_id', $property_id)
-                ->first();
+            $exists = Wishlist::where('user_id', Auth::id())->where('property_id', $property_id)->first();
 
             if (!$exists) {
                 Wishlist::insert([
@@ -43,10 +41,7 @@ class WishlistController extends Controller
 
     public function GetWishlistProperty()
     {
-        $wishlist = Wishlist::with('property')
-            ->where('user_id', Auth::id())
-            ->latest()
-            ->get();
+        $wishlist = Wishlist::with('property')->where('user_id', Auth::id())->latest()->get();
 
         $wishlistQuantity = wishlist::count();
 
@@ -55,9 +50,7 @@ class WishlistController extends Controller
 
     public function WishlistRemove($id)
     {
-        Wishlist::where('user_id', Auth::id())
-            ->where('id', $id)
-            ->delete();
+        Wishlist::where('user_id', Auth::id())->where('id', $id)->delete();
         return response()->json(['success' => 'Successfully Property Remove']);
     } // End Method
 }

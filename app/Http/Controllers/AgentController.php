@@ -98,9 +98,7 @@ class AgentController extends Controller
             'alert-type' => 'success',
         ];
 
-        return redirect()
-            ->back()
-            ->with($notification);
+        return redirect()->back()->with($notification);
     } // End Method
 
     // Method to display the agent change password view

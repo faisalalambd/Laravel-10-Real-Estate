@@ -40,9 +40,7 @@ class AmenitiesController extends Controller
         ];
 
         // Redirect to the 'all.amenities' route with the notification message
-        return redirect()
-            ->route('all.amenities')
-            ->with($notification);
+        return redirect()->route('all.amenities')->with($notification);
     } // End Method
 
     // Method to display the form for editing a specific amenity
@@ -73,9 +71,7 @@ class AmenitiesController extends Controller
         ];
 
         // Redirect to the 'all.amenities' route with the notification message
-        return redirect()
-            ->route('all.amenities')
-            ->with($notification);
+        return redirect()->route('all.amenities')->with($notification);
     } // End Method
 
     // Method to delete a specific amenity
@@ -91,8 +87,6 @@ class AmenitiesController extends Controller
         ];
 
         // Redirect back to the previous page with the notification message.
-        return redirect()
-            ->back()
-            ->with($notification);
+        return redirect()->back()->with($notification);
     } // End Method
 }

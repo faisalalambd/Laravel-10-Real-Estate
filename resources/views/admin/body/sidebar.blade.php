@@ -77,9 +77,19 @@
             </li>
 
             <li class="nav-item">
+                <a href="{{ route('contact.us.message') }}" class="nav-link">
+                    <i class="link-icon" data-feather="hash"></i>
+                    <span class="link-title">Contact Us Message</span>
+                </a>
+            </li>
+
+
+            <li class="nav-item nav-category">Testimonial</li>
+
+            <li class="nav-item">
                 <a href="{{ route('all.testimonial') }}" class="nav-link">
                     <i class="link-icon" data-feather="hash"></i>
-                    <span class="link-title">Testimonials Manage</span>
+                    <span class="link-title">Testimonials</span>
                 </a>
             </li>
 

@@ -13,9 +13,7 @@ class CompareController extends Controller
     public function AddToCompare(Request $request, $property_id)
     {
         if (Auth::check()) {
-            $exists = Compare::where('user_id', Auth::id())
-                ->where('property_id', $property_id)
-                ->first();
+            $exists = Compare::where('user_id', Auth::id())->where('property_id', $property_id)->first();
 
             if (!$exists) {
                 Compare::insert([
@@ -39,19 +37,14 @@ class CompareController extends Controller
 
     public function GetCompareProperty()
     {
-        $compare = Compare::with('property')
-            ->where('user_id', Auth::id())
-            ->latest()
-            ->get();
+        $compare = Compare::with('property')->where('user_id', Auth::id())->latest()->get();
 
         return response()->json($compare);
     } // End Method
 
     public function CompareRemove($id)
     {
-        Compare::where('user_id', Auth::id())
-            ->where('id', $id)
-            ->delete();
+        Compare::where('user_id', Auth::id())->where('id', $id)->delete();
         return response()->json(['success' => 'Successfully Property Remove']);
     } // End Method
 }

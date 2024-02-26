@@ -12,13 +12,11 @@ return new class extends Migration {
     {
         Schema::create('properties', function (Blueprint $table) {
             $table->id();
-
             $table->string('property_name');
             $table->string('property_slug');
             $table->string('property_thumbnail');
             $table->text('short_description')->nullable();
             $table->text('long_description')->nullable();
-
             $table->string('property_code');
             $table->string('lowest_price')->nullable();
             $table->string('max_price')->nullable();
@@ -30,9 +28,7 @@ return new class extends Migration {
             $table->string('garage')->nullable();
             $table->string('garage_size')->nullable();
             $table->string('property_status');
-
             $table->string('amenities_id');
-
             $table->string('address')->nullable();
             $table->string('state')->nullable();
             $table->string('neighborhood')->nullable();
@@ -40,16 +36,11 @@ return new class extends Migration {
             $table->string('city')->nullable();
             $table->string('latitude')->nullable();
             $table->string('longitude')->nullable();
-
             $table->string('property_video')->nullable();
-
             $table->string('featured')->nullable();
             $table->string('hot')->nullable();
-
             $table->integer('agent_id')->nullable();
-
             $table->string('status')->default(0);
-
             $table->timestamps();
         });
     }
