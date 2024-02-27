@@ -7,7 +7,7 @@
                     <h2>Reasons To Choose Us</h2>
                 </div>
                 <div class="btn-box">
-                    <a href="categories.html" class="theme-btn btn-one">All Categories</a>
+                    <a href="categories.html" class="theme-btn btn-one">All Services</a>
                 </div>
             </div>
             <div class="lower-box">

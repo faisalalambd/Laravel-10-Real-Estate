@@ -309,3 +309,6 @@ Route::post('/store/tour/schedule', [IndexController::class, 'StoreTourSchedule'
 // Contact Us Route
 Route::get('/contact/us', [ContactUsController::class, 'ContactUs'])->name('contact.us');
 Route::post('/store/contact/us/message', [ContactUsController::class, 'StoreContactUsMessage'])->name('store.contact.us');
+
+// All Property Types Route
+Route::get('/all/property/types', [PropertyTypeController::class, 'AllPropertyTypes'])->name('all.property.types');

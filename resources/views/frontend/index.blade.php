@@ -62,7 +62,7 @@
 
 
 <!-- download-section -->
-@include('frontend.home.download')
+{{-- @include('frontend.home.download') --}}
 <!-- download-section end -->
 
 

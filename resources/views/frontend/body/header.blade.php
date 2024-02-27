@@ -119,8 +119,9 @@
 
                                 <li><a href="#"><span>About Us</span></a></li>
 
-                                <li class="dropdown"><a href="#"><span>Property</span></a>
+                                <li class="dropdown"><a><span>Property</span></a>
                                     <ul>
+                                        <li><a href="{{ route('all.property.types') }}">Property Types</a></li>
                                         <li><a href="{{ route('rent.property') }}">Rent Property</a></li>
                                         <li><a href="{{ route('buy.property') }}">Buy Property</a></li>
                                     </ul>

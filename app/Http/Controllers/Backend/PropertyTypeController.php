@@ -84,4 +84,12 @@ class PropertyTypeController extends Controller
 
         return redirect()->back()->with($notification);
     } // End Method
+
+    // #################### Frontend All Property Types ####################
+    public function AllPropertyTypes()
+    {
+        $all_property_types_data = PropertyType::latest()->get();
+
+        return view('frontend.propertyTypes.all_property_types', compact('all_property_types_data'));
+    }
 }

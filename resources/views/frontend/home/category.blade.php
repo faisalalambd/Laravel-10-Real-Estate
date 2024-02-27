@@ -44,7 +44,11 @@
 
             </ul>
 
-            <div class="more-btn"><a href="categories.html" class="theme-btn btn-one">All Categories</a></div>
+            <div class="more-btn">
+                <a href="{{ route('all.property.types') }}" class="theme-btn btn-one">
+                    All Property Types
+                </a>
+            </div>
 
         </div>
 
