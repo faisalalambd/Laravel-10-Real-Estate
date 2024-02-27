@@ -104,6 +104,16 @@
             </li>
 
 
+            <li class="nav-item nav-category">Partners</li>
+
+            <li class="nav-item">
+                <a href="{{ route('all.our.partners') }}" class="nav-link">
+                    <i class="link-icon" data-feather="hash"></i>
+                    <span class="link-title">Our Partners</span>
+                </a>
+            </li>
+
+
             <li class="nav-item nav-category">Agent</li>
 
             <li class="nav-item">

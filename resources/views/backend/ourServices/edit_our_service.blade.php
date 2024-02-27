@@ -2,7 +2,7 @@
 @section('admin')
 
 @section('admin_title')
-    Edit Our Service
+    Edit Service
 @endsection
 
 
@@ -14,7 +14,7 @@
     <nav class="page-breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#!">Form</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Edit Our Service</li>
+            <li class="breadcrumb-item active" aria-current="page">Edit Service</li>
         </ol>
     </nav>
 

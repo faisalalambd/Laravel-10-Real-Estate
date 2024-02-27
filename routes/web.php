@@ -17,6 +17,7 @@ use App\Http\Controllers\Backend\BlogController;
 use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\Backend\ContactUsController;
 use App\Http\Controllers\Backend\OurServicesController;
+use App\Http\Controllers\Backend\OurPartnersController;
 
 use App\Http\Controllers\Agent\AgentPropertyController;
 
@@ -209,6 +210,16 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/edit/our/service/{id}', 'EditOurService')->name('edit.our.service');
         Route::post('/update/our/service', 'UpdateOurService')->name('update.our.service');
         Route::get('/delete/our/service/{id}', 'DeleteOurService')->name('delete.our.service');
+    });
+
+    // Our Partners All Routes
+    Route::controller(OurPartnersController::class)->group(function () {
+        Route::get('/all/our/partners', 'AllOurPartners')->name('all.our.partners');
+        Route::get('/add/our/partner', 'AddOurPartner')->name('add.our.partner');
+        Route::post('/store/our/partner', 'StoreOurPartner')->name('store.our.partner');
+        Route::get('/edit/our/partner/{id}', 'EditOurPartner')->name('edit.our.partner');
+        Route::post('/update/our/partner', 'UpdateOurPartner')->name('update.our.partner');
+        Route::get('/delete/our/partner/{id}', 'DeleteOurPartner')->name('delete.our.partner');
     });
 }); // End Admin Group Middleware
 
