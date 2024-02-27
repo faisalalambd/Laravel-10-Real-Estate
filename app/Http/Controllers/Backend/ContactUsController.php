@@ -8,29 +8,6 @@ use Illuminate\Http\Request;
 
 class ContactUsController extends Controller
 {
-    public function ContactUs()
-    {
-        return view('frontend.contactUs.contact_us');
-    } // End Method
-
-    public function StoreContactUsMessage(Request $request)
-    {
-        ContactUs::insert([
-            'username' => $request->username,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'subject' => $request->subject,
-            'message' => $request->message,
-        ]);
-
-        $notification = [
-            'message' => 'Your Message Send Successfully',
-            'alert-type' => 'success',
-        ];
-
-        return redirect()->back()->with($notification);
-    } // End Method
-
     public function ContactUsMessage()
     {
         $contact_us_message_data = ContactUs::orderBy('id', 'desc')->get();

@@ -45,7 +45,7 @@
             </ul>
 
             <div class="more-btn">
-                <a href="{{ route('all.property.types') }}" class="theme-btn btn-one">
+                <a href="{{ route('property.types') }}" class="theme-btn btn-one">
                     All Property Types
                 </a>
             </div>

@@ -19,9 +19,9 @@
                         {{ $site_setting->company_address }}
                     </li>
 
-                    <li>
+                    {{-- <li>
                         <i class="far fa-clock"></i>Mon - Sat 9.00 - 18.00
-                    </li>
+                    </li> --}}
 
                     <li>
                         <i class="far fa-phone"></i>
@@ -119,9 +119,11 @@
 
                                 <li><a href="#"><span>About Us</span></a></li>
 
+                                <li><a href="{{ route('our.services') }}"><span>Services</span></a></li>
+
                                 <li class="dropdown"><a><span>Property</span></a>
                                     <ul>
-                                        <li><a href="{{ route('all.property.types') }}">Property Types</a></li>
+                                        <li><a href="{{ route('property.types') }}">Property Types</a></li>
                                         <li><a href="{{ route('rent.property') }}">Rent Property</a></li>
                                         <li><a href="{{ route('buy.property') }}">Buy Property</a></li>
                                     </ul>

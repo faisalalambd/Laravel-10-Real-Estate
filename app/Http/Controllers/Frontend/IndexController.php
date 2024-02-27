@@ -7,7 +7,9 @@ use App\Models\State;
 use App\Models\Facility;
 use App\Models\Property;
 use App\Models\Schedule;
+use App\Models\ContactUs;
 use App\Models\MultiImage;
+use App\Models\OurServices;
 use App\Models\PropertyType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -252,4 +254,40 @@ class IndexController extends Controller
             return redirect()->back()->with($notification);
         }
     } // End Method
+
+    public function ContactUs()
+    {
+        return view('frontend.contactUs.contact_us');
+    } // End Method
+
+    public function StoreContactUsMessage(Request $request)
+    {
+        ContactUs::insert([
+            'username' => $request->username,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'subject' => $request->subject,
+            'message' => $request->message,
+        ]);
+
+        $notification = [
+            'message' => 'Your Message Send Successfully',
+            'alert-type' => 'success',
+        ];
+
+        return redirect()->back()->with($notification);
+    } // End Method
+
+    public function PropertyTypes()
+    {
+        $property_types_data = PropertyType::latest()->get();
+
+        return view('frontend.propertyTypes.property_types', compact('property_types_data'));
+    } // End Method
+
+    public function OurServices(){
+        $our_services_data = OurServices::latest()->get();
+        
+        return view('frontend.ourServices.our_services', compact('our_services_data'));
+    }
 }

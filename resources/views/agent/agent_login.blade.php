@@ -1,7 +1,7 @@
 @extends('frontend.frontend_dashboard')
 @section('main')
 
-@section('agent_title')
+@section('title')
     Agent Sign In
 @endsection
 

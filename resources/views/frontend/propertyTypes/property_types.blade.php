@@ -2,7 +2,7 @@
 @section('main')
 
 @section('title')
-    All Property Types
+    Property Types
 @endsection
 
 <style>
@@ -26,7 +26,7 @@
     </div>
     <div class="auto-container">
         <div class="content-box clearfix">
-            <h1>All Property Types</h1>
+            <h1>Property Types</h1>
             <ul class="bread-crumb clearfix">
                 <li><a href="{{ url('/') }}">Home</a></li>
                 <li>All Property Types</li>
@@ -46,9 +46,9 @@
 
             <ul class="category-list clearfix">
 
-                @foreach ($all_property_types_data as $all_property_types)
+                @foreach ($property_types_data as $property_types)
                     @php
-                        $property_count = App\Models\Property::where('propertyType_id', $all_property_types->id)->get();
+                        $property_count = App\Models\Property::where('propertyType_id', $property_types->id)->get();
                     @endphp
 
                     <li>
@@ -58,12 +58,12 @@
                             <div class="inner-box">
 
                                 <div class="icon-box">
-                                    <i class="{{ $all_property_types->type_icon }}"></i>
+                                    <i class="{{ $property_types->type_icon }}"></i>
                                 </div>
 
                                 <h5>
                                     <a
-                                        href="{{ route('property.type', $all_property_types->id) }}">{{ $all_property_types->type_name }}</a>
+                                        href="{{ route('property.type', $property_types->id) }}">{{ $property_types->type_name }}</a>
                                 </h5>
 
                                 <span>{{ count($property_count) }}</span>
