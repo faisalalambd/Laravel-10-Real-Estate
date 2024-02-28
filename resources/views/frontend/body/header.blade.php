@@ -117,7 +117,7 @@
 
                                 <li><a href="{{ url('/') }}"><span>Home</span></a></li>
 
-                                <li><a href="#"><span>About Us</span></a></li>
+                                <li><a href="{{ route('about.us') }}"><span>About Us</span></a></li>
 
                                 <li><a href="{{ route('our.services') }}"><span>Services</span></a></li>
 

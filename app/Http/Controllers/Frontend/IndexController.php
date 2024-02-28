@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Models\User;
 use App\Models\State;
+use App\Models\AboutUs;
 use App\Models\Facility;
 use App\Models\Property;
 use App\Models\Schedule;
@@ -285,9 +286,15 @@ class IndexController extends Controller
         return view('frontend.propertyTypes.property_types', compact('property_types_data'));
     } // End Method
 
-    public function OurServices(){
+    public function OurServices()
+    {
         $our_services_data = OurServices::latest()->get();
-        
+
         return view('frontend.ourServices.our_services', compact('our_services_data'));
-    }
+    } //End Method
+
+    public function AboutUs()
+    {
+        return view('frontend.aboutUs.about_us');
+    } // End Method
 }

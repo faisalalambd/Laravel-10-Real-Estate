@@ -18,6 +18,7 @@ use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\Backend\ContactUsController;
 use App\Http\Controllers\Backend\OurServicesController;
 use App\Http\Controllers\Backend\OurPartnersController;
+use App\Http\Controllers\Backend\AboutUsController;
 
 use App\Http\Controllers\Agent\AgentPropertyController;
 
@@ -221,6 +222,13 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::post('/update/our/partner', 'UpdateOurPartner')->name('update.our.partner');
         Route::get('/delete/our/partner/{id}', 'DeleteOurPartner')->name('delete.our.partner');
     });
+
+    // About Us All Routes
+    Route::controller(AboutUsController::class)->group(function () {
+        Route::get('/all/about/us', 'AllAboutUs')->name('all.about.us');
+        Route::get('/edit/about/us/{id}', 'EditAboutUs')->name('edit.about.us');
+        Route::post('/update/about/us', 'UpdateAboutUs')->name('update.about.us');
+    });
 }); // End Admin Group Middleware
 
 Route::get('/admin/login', [AdminController::class, 'AdminLogin'])
@@ -317,7 +325,7 @@ Route::controller(IndexController::class)->group(function () {
     Route::post('/store/tour/schedule', 'StoreTourSchedule')->name('store.tour.schedule');
 
     // Contact Us
-    Route::get('/contact/us', 'ContactUs')->name('contact.us');
+    Route::get('/contact-us', 'ContactUs')->name('contact.us');
     Route::post('/store/contact/us/message', 'StoreContactUsMessage')->name('store.contact.us');
 
     // Property Types
@@ -325,7 +333,10 @@ Route::controller(IndexController::class)->group(function () {
 
     // Our Services
     Route::get('/our/services', 'OurServices')->name('our.services');
-});
+
+    // About Us
+    Route::get('/about-us', 'AboutUs')->name('about.us');
+}); // End Frontend All Routes
 
 // Frontend Blog All Routes
 Route::controller(BlogController::class)->group(function () {

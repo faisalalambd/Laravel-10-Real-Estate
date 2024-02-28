@@ -114,6 +114,16 @@
             </li>
 
 
+            <li class="nav-item nav-category">About</li>
+
+            <li class="nav-item">
+                <a href="{{ route('all.about.us') }}" class="nav-link">
+                    <i class="link-icon" data-feather="hash"></i>
+                    <span class="link-title">About Us</span>
+                </a>
+            </li>
+
+
             <li class="nav-item nav-category">Agent</li>
 
             <li class="nav-item">
