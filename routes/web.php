@@ -336,6 +336,18 @@ Route::controller(IndexController::class)->group(function () {
 
     // About Us
     Route::get('/about-us', 'AboutUs')->name('about.us');
+
+    // Properties
+    Route::get('/properties', 'Properties')->name('properties');
+
+    // Agents
+    Route::get('/agents', 'Agents')->name('agents');
+
+    // Agent Search
+    Route::get('/search/agents', 'SearchAgents')->name('search.agents');
+
+    // Blog Search
+    Route::get('/search/blog', 'SearchBlog')->name('search.blog');
 }); // End Frontend All Routes
 
 // Frontend Blog All Routes

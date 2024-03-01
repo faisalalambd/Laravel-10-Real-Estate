@@ -121,21 +121,20 @@
 
                                 <li><a href="{{ route('our.services') }}"><span>Services</span></a></li>
 
-                                <li class="dropdown"><a><span>Property</span></a>
+                                <li class="dropdown"><a href="{{ route('properties') }}"><span>Property</span></a>
                                     <ul>
-                                        <li><a href="{{ route('property.types') }}">Property Types</a></li>
                                         <li><a href="{{ route('rent.property') }}">Rent Property</a></li>
                                         <li><a href="{{ route('buy.property') }}">Buy Property</a></li>
                                     </ul>
                                 </li>
 
-                                <li><a href="#"><span>Agent</span></a></li>
+                                <li><a href="{{ route('agents') }}"><span>Agent</span></a></li>
 
                                 <li><a href="{{ route('blog.list') }}"><span>Blog</span></a></li>
 
                                 <li><a href="{{ route('contact.us') }}"><span>Contact</span></a></li>
 
-                                <li>
+                                {{-- <li>
                                     <style>
                                         .custom_button:hover {
                                             color: #2dbe6c !important;
@@ -146,7 +145,7 @@
                                     <a href="{{ route('agent.login') }}"
                                         class="theme-btn btn-one btn-light custom_button">
                                         <span>+</span>Add Listing</a>
-                                </li>
+                                </li> --}}
 
                             </ul>
 
@@ -157,9 +156,9 @@
                 </div>
 
 
-                <div class="btn-box">
+                {{-- <div class="btn-box">
                     <a href="{{ route('agent.login') }}" class="theme-btn btn-one"><span>+</span>Add Listing</a>
-                </div>
+                </div> --}}
 
             </div>
 
@@ -190,9 +189,9 @@
                     </nav>
                 </div>
 
-                <div class="btn-box">
+                {{-- <div class="btn-box">
                     <a href="{{ route('agent.login') }}" class="theme-btn btn-one"><span>+</span>Add Listing</a>
-                </div>
+                </div> --}}
 
             </div>
 

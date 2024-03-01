@@ -5,12 +5,14 @@ namespace App\Http\Controllers\Frontend;
 use App\Models\User;
 use App\Models\State;
 use App\Models\AboutUs;
+use App\Models\BlogPost;
 use App\Models\Facility;
 use App\Models\Property;
 use App\Models\Schedule;
 use App\Models\ContactUs;
 use App\Models\MultiImage;
 use App\Models\OurServices;
+use App\Models\BlogCategory;
 use App\Models\PropertyType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -297,4 +299,57 @@ class IndexController extends Controller
     {
         return view('frontend.aboutUs.about_us');
     } // End Method
+
+    public function Properties()
+    {
+        $properties_data = Property::orderBy('id', 'desc')->paginate(10);
+
+        $rent_property = Property::where('property_status', 'rent')->get();
+        $buy_property = Property::where('property_status', 'buy')->get();
+
+        return view('frontend.property.properties', compact('properties_data', 'rent_property', 'buy_property'));
+    }
+
+    public function Agents()
+    {
+        $agents_data = User::where('status', 'active')->where('role', 'agent')->latest()->paginate(15);
+
+        $rent_property = Property::where('property_status', 'rent')->get();
+        $buy_property = Property::where('property_status', 'buy')->get();
+
+        $featured = Property::where('featured', '1')->limit(3)->get();
+
+        return view('frontend.agent.agents', compact('agents_data', 'rent_property', 'buy_property', 'featured'));
+    }
+
+    public function SearchAgents(Request $request)
+    {
+        $query = $request->input('name');
+
+        $agents_data = User::where('status', 'active')
+            ->where('role', 'agent')
+            ->where('name', 'LIKE', "%$query%")
+            ->latest()
+            ->paginate(15);
+
+        $rent_property = Property::where('property_status', 'rent')->get();
+        $buy_property = Property::where('property_status', 'buy')->get();
+        $featured = Property::where('featured', '1')->limit(3)->get();
+
+        return view('frontend.agent.agents', compact('agents_data', 'rent_property', 'buy_property', 'featured'));
+    }
+
+    public function SearchBlog(Request $request)
+    {
+        $query = $request->input('post_title');
+
+        $blog = BlogPost::where('post_title', 'LIKE', "%$query%")
+            ->latest()
+            ->paginate(15);
+
+        $blogCategory = BlogCategory::latest()->get();
+        $blogPost = BlogPost::latest()->limit(3)->get();
+
+        return view('frontend.blog.blog_list', compact('blog', 'blogCategory', 'blogPost'));
+    }
 }

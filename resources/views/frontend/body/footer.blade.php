@@ -13,33 +13,54 @@
             <div class="row clearfix">
 
                 <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
+
                     <div class="footer-widget about-widget">
+
                         <div class="widget-title">
                             <h3>About</h3>
                         </div>
+
+
                         <div class="text">
                             <p>{!! $site_setting->company_about !!}</p>
                         </div>
+
                     </div>
+
                 </div>
 
 
                 <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
+
                     <div class="footer-widget links-widget ml-70">
+
                         <div class="widget-title">
                             <h3>Services</h3>
                         </div>
+
+
                         <div class="widget-content">
+
                             <ul class="links-list class">
-                                <li><a href="index.html">About Us</a></li>
-                                <li><a href="index.html">Listing</a></li>
-                                <li><a href="index.html">How It Works</a></li>
-                                <li><a href="index.html">Our Services</a></li>
-                                <li><a href="index.html">Our Blog</a></li>
-                                <li><a href="index.html">Contact Us</a></li>
+
+                                <li><a href="{{ route('agent.login') }}">Agent Login</a></li>
+
+                                <li><a href="{{ route('property.types') }}">Property Types</a></li>
+
+                                <li><a href="{{ route('about.us') }}">Our Partners</a></li>
+
+                                <li><a href="{{ route('our.services') }}">Our Services</a></li>
+
+                                <li><a href="{{ route('blog.list') }}">Our Blog</a></li>
+
+                                <li><a href="{{ route('contact.us') }}">Contact Us</a></li>
+
                             </ul>
+
                         </div>
+
                     </div>
+
                 </div>
 
 
@@ -95,16 +116,31 @@
 
                             <ul class="info-list clearfix">
 
-                                <li><i class="fas fa-map-marker-alt"></i>{{ $site_setting->company_address }}</li>
-                                <li><i class="fas fa-microphone"></i><a
-                                        href="tel:{{ $site_setting->company_phone }}">{{ $site_setting->company_phone }}</a>
+                                <li>
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    {{ $site_setting->company_address }}
                                 </li>
-                                <li><i class="fas fa-envelope"></i><a
-                                        href="mailto:{{ $site_setting->company_email }}">{{ $site_setting->company_email }}</a>
+
+                                <li>
+                                    <i class="fas fa-phone"></i>
+                                    <a href="tel:{{ $site_setting->company_phone }}">
+                                        {{ $site_setting->company_phone }}
+                                    </a>
                                 </li>
+
+                                <li>
+                                    <i class="fas fa-envelope"></i>
+                                    <a href="mailto:{{ $site_setting->company_email }}">
+                                        {{ $site_setting->company_email }}
+                                    </a>
+                                </li>
+
                             </ul>
+
                         </div>
+
                     </div>
+
                 </div>
 
             </div>
@@ -121,18 +157,23 @@
             <div class="inner-box clearfix">
 
                 <figure class="footer-logo">
-                    <a href="index.html">
+                    <a href="{{ url('/') }}">
                         <img src="{{ asset('frontend/assets/images/footer-logo.png') }}" alt="">
                     </a>
                 </figure>
 
+
                 <div class="copyright pull-left">
-                    <p><a href="index.html">{{ $site_setting->copyright }}</p>
+                    <p><a>{{ $site_setting->copyright }}</p>
                 </div>
 
+
                 <ul class="footer-nav pull-right clearfix">
-                    <li><a href="index.html">Terms of Service</a></li>
-                    <li><a href="index.html">Privacy Policy</a></li>
+
+                    <li><a href="#!">Terms of Service</a></li>
+
+                    <li><a href="#!">Privacy Policy</a></li>
+
                 </ul>
 
             </div>

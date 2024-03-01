@@ -5,6 +5,10 @@
     {{ $breadcrumb_category->category_name }}
 @endsection
 
+@php
+    $site_setting = App\Models\SiteSetting::find(1);
+@endphp
+
 
 <!--Page Title-->
 <section class="page-title-two bg-color-1 centred">
@@ -126,31 +130,67 @@
                 <div class="blog-sidebar">
 
                     <div class="sidebar-widget search-widget">
+
                         <div class="widget-title">
                             <h4>Search</h4>
                         </div>
+
+
                         <div class="search-inner">
-                            <form action="blog-1.html" method="post">
+
+                            <form action="{{ route('search.blog') }}" method="GET">
+
                                 <div class="form-group">
-                                    <input type="search" name="search_field" placeholder="Search" required="">
+
+                                    <input type="text" name="post_title" placeholder="Enter Blog Name"
+                                        required="">
+
                                     <button type="submit"><i class="fas fa-search"></i></button>
+
                                 </div>
+
                             </form>
+
                         </div>
+
                     </div>
 
 
                     <div class="sidebar-widget social-widget">
+
                         <div class="widget-title">
                             <h4>Follow Us On</h4>
                         </div>
+
+
                         <ul class="social-links clearfix">
-                            <li><a href="blog-1.html"><i class="fab fa-facebook-f"></i></a></li>
-                            <li><a href="blog-1.html"><i class="fab fa-google-plus-g"></i></a></li>
-                            <li><a href="blog-1.html"><i class="fab fa-twitter"></i></a></li>
-                            <li><a href="blog-1.html"><i class="fab fa-linkedin-in"></i></a></li>
-                            <li><a href="blog-1.html"><i class="fab fa-instagram"></i></a></li>
+
+                            <li>
+                                <a href="{{ $site_setting->facebook }}" target="_blank">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="{{ $site_setting->youtube }}" target="_blank">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="{{ $site_setting->instagram }}" target="_blank">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="{{ $site_setting->twitter }}" target="_blank">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                            </li>
+
                         </ul>
+
                     </div>
 
 
@@ -165,7 +205,10 @@
                             <ul class="category-list clearfix">
                                 @foreach ($blogCategory as $category)
                                     @php
-                                        $blog_post = App\Models\BlogPost::where('blog_category_id', $category->id)->get();
+                                        $blog_post = App\Models\BlogPost::where(
+                                            'blog_category_id',
+                                            $category->id,
+                                        )->get();
                                     @endphp
 
                                     <li>
