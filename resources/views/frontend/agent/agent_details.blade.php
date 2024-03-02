@@ -48,6 +48,7 @@
                             </div>
                             <ul class="social-list pull-right clearfix">
                                 <li><a href="agents-details.html"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="agents-details.html"><i class="fab fa-youtube"></i></a></li>
                                 <li><a href="agents-details.html"><i class="fab fa-twitter"></i></a></li>
                                 <li><a href="agents-details.html"><i class="fab fa-linkedin-in"></i></a></li>
                             </ul>
@@ -116,7 +117,7 @@
                                                     @endif
 
                                                     <div class="buy-btn">
-                                                        <a href="property-details.html">
+                                                        <a>
                                                             For {{ $item->property_status }}
                                                         </a>
                                                     </div>

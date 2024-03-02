@@ -55,7 +55,7 @@
                                     </div>
 
                                     <div class="buy-btn pull-right">
-                                        <a href="property-details.html">
+                                        <a>
                                             For {{ $item->property_status }}
                                         </a>
                                     </div>

@@ -58,21 +58,18 @@
 
     <div class="main-wrapper">
 
-        <!-- partial:partials/_sidebar.html -->
+        <!-- Admin Sidebar -->
         @include('admin.body.sidebar')
-        <!-- partial -->
 
         <div class="page-wrapper">
 
-            <!-- partial:partials/_navbar.html -->
+            <!-- Admin Header -->
             @include('admin.body.header')
-            <!-- partial -->
 
             @yield('admin')
 
-            <!-- partial:partials/_footer.html -->
+            <!-- Admin Footer -->
             @include('admin.body.footer')
-            <!-- partial -->
 
         </div>
 

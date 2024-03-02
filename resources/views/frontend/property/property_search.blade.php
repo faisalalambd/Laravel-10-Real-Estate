@@ -202,7 +202,7 @@
                                             @endif
 
                                             <div class="buy-btn">
-                                                <a href="property-details.html">
+                                                <a>
                                                     For {{ $item->property_status }}
                                                 </a>
                                             </div>

@@ -58,21 +58,18 @@
 
     <div class="main-wrapper">
 
-        <!-- partial:partials/_sidebar.html -->
+        <!-- Agent Sidebar -->
         @include('agent.body.sidebar')
-        <!-- partial -->
 
         <div class="page-wrapper">
 
-            <!-- partial:partials/_navbar.html -->
+            <!-- Agent Header -->
             @include('agent.body.header')
-            <!-- partial -->
 
             @yield('agent')
 
-            <!-- partial:partials/_footer.html -->
+            <!-- Agent Footer -->
             @include('agent.body.footer')
-            <!-- partial -->
 
         </div>
 

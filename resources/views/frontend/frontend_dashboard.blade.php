@@ -201,7 +201,7 @@
                                     <span class="category">Featured</span>
 
                                     <div class="buy-btn">
-                                        <a href="property-details.html">For ${value.property.property_status}</a>
+                                        <a>For ${value.property.property_status}</a>
                                     </div>
 
                                 </div>

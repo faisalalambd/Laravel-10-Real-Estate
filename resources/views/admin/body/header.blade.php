@@ -30,28 +30,28 @@
                     </div>
                     <div class="row g-0 p-1">
                         <div class="col-3 text-center">
-                            <a href="pages/apps/chat.html"
+                            <a href="#!"
                                 class="dropdown-item d-flex flex-column align-items-center justify-content-center wd-70 ht-70"><i
                                     data-feather="message-square" class="icon-lg mb-1"></i>
                                 <p class="tx-12">Chat</p>
                             </a>
                         </div>
                         <div class="col-3 text-center">
-                            <a href="pages/apps/calendar.html"
+                            <a href="#!"
                                 class="dropdown-item d-flex flex-column align-items-center justify-content-center wd-70 ht-70"><i
                                     data-feather="calendar" class="icon-lg mb-1"></i>
                                 <p class="tx-12">Calendar</p>
                             </a>
                         </div>
                         <div class="col-3 text-center">
-                            <a href="pages/email/inbox.html"
+                            <a href="#!"
                                 class="dropdown-item d-flex flex-column align-items-center justify-content-center wd-70 ht-70"><i
                                     data-feather="mail" class="icon-lg mb-1"></i>
                                 <p class="tx-12">Email</p>
                             </a>
                         </div>
                         <div class="col-3 text-center">
-                            <a href="pages/general/profile.html"
+                            <a href="#!"
                                 class="dropdown-item d-flex flex-column align-items-center justify-content-center wd-70 ht-70"><i
                                     data-feather="instagram" class="icon-lg mb-1"></i>
                                 <p class="tx-12">Profile</p>

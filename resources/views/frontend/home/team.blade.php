@@ -1,5 +1,9 @@
 @php
-    $agents = App\Models\User::where('status', 'active')->where('role', 'agent')->orderBy('id', 'DESC')->limit(5)->get();
+    $agents = App\Models\User::where('status', 'active')
+        ->where('role', 'agent')
+        ->orderBy('id', 'DESC')
+        ->limit(5)
+        ->get();
 @endphp
 
 
@@ -39,6 +43,7 @@
 
                                 <ul class="social-links clearfix">
                                     <li><a href="index.html"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="index.html"><i class="fab fa-youtube"></i></a></li>
                                     <li><a href="index.html"><i class="fab fa-twitter"></i></a></li>
                                     <li><a href="index.html"><i class="fab fa-google-plus-g"></i></a></li>
                                 </ul>

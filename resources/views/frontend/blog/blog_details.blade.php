@@ -114,7 +114,7 @@
                     <div class="comments-area">
 
                         <div class="group-title">
-                            <h4>3 Comments</h4>
+                            <h4>Comments</h4>
                         </div>
 
 
@@ -138,7 +138,6 @@
                                         <div class="text">
                                             <h6>{{ $comment->subject }}</h6>
                                             <p>{{ $comment->message }}</p>
-                                            <a href="blog-details.html"><i class="fas fa-share"></i>Reply</a>
                                         </div>
                                     </div>
                                 </div>
@@ -164,7 +163,6 @@
 
                                             <div class="text">
                                                 <p>{{ $reply->message }}</p>
-                                                <a href="blog-details.html"><i class="fas fa-share"></i>Reply</a>
                                             </div>
 
                                         </div>

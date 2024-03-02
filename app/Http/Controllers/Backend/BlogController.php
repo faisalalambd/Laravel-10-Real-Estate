@@ -301,7 +301,6 @@ class BlogController extends Controller
             'alert-type' => 'success',
         ];
 
-        // return redirect()->back()->with($notification);
         return redirect()->route('admin.blog.comment')->with($notification);
     } // End Method
 }

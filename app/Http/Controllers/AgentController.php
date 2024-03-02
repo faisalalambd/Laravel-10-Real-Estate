@@ -39,16 +39,14 @@ class AgentController extends Controller
         return redirect(RouteServiceProvider::AGENT);
     } // End Method
 
-    // Method to handle agent logout
     public function AgentLogout(Request $request)
     {
-        Auth::guard('web')->logout(); // Logout the user
+        Auth::guard('web')->logout();
 
-        $request->session()->invalidate(); // Invalidate the user's session
+        $request->session()->invalidate();
 
-        $request->session()->regenerateToken(); // Regenerate the session token
+        $request->session()->regenerateToken();
 
-        // Notification to be displayed after logout
         $notification = [
             'message' => 'Agent Logout Successfully',
             'alert-type' => 'success',
@@ -57,23 +55,20 @@ class AgentController extends Controller
         return redirect('/agent/login')->with($notification);
     } // End Method
 
-    // Method to display and update the agent profile
     public function AgentProfile()
     {
-        $id = Auth::user()->id; // Get the user ID from the authenticated user
+        $id = Auth::user()->id;
 
-        $profileData = User::find($id); // Retrieve user data for the given ID
+        $profileData = User::find($id);
 
         return view('agent.agent_profile_view', compact('profileData'));
     } // End Method
 
-    // Method to store the updated agent profile information
     public function AgentProfileStore(Request $request)
     {
-        $id = Auth::user()->id; // Get the user ID from the authenticated user
-        $data = User::find($id); // Retrieve user data for the given ID
+        $id = Auth::user()->id;
+        $data = User::find($id);
 
-        // Update user profile information from the form data
         $data->username = $request->username;
         $data->name = $request->name;
         $data->email = $request->email;
@@ -81,7 +76,6 @@ class AgentController extends Controller
         $data->address = $request->address;
         $data->description = $request->description;
 
-        // Handle profile photo upload
         if ($request->file('photo')) {
             $file = $request->file('photo');
             @unlink(public_path('upload/agent_images/' . $data->photo));
@@ -90,9 +84,8 @@ class AgentController extends Controller
             $data['photo'] = $filename;
         }
 
-        $data->save(); // Save the updated profile data
+        $data->save();
 
-        // Notification to be displayed after profile update
         $notification = [
             'message' => 'Agent Profile Updated Successfully',
             'alert-type' => 'success',
@@ -101,26 +94,22 @@ class AgentController extends Controller
         return redirect()->back()->with($notification);
     } // End Method
 
-    // Method to display the agent change password view
     public function AgentChangePassword()
     {
-        $id = Auth::user()->id; // Get the user ID from the authenticated user
+        $id = Auth::user()->id;
 
-        $profileData = User::find($id); // Retrieve user data for the given ID
+        $profileData = User::find($id);
 
         return view('agent.agent_change_password', compact('profileData'));
     } // End Method
 
-    // Method to update the agent password
     public function AgentUpdatePassword(Request $request)
     {
-        // Validation for old and new passwords
         $request->validate([
             'old_password' => 'required',
             'new_password' => 'required|confirmed',
         ]);
 
-        // Check if the old password matches the current password
         if (!Hash::check($request->old_password, auth::user()->password)) {
             $notification = [
                 'message' => 'Old Password Does not Match!',
@@ -130,12 +119,10 @@ class AgentController extends Controller
             return back()->with($notification);
         }
 
-        // Update the password with the hashed new password
         User::whereId(auth()->user()->id)->update([
             'password' => Hash::make($request->new_password),
         ]);
 
-        // Notification to be displayed after password change
         $notification = [
             'message' => 'Password Change Successfully',
             'alert-type' => 'success',
