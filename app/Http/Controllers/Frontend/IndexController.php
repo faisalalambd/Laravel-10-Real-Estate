@@ -36,7 +36,9 @@ class IndexController extends Controller
         $type_id = $property->propertyType_id;
         $relatedProperty = Property::where('propertyType_id', $type_id)->where('id', '!=', $id)->orderBy('id', 'DESC')->limit(3)->get();
 
-        return view('frontend.property.property_details', compact('property', 'multiImage', 'property_amenities', 'facility', 'relatedProperty'));
+        $recent_property = Property::orderBy('id', 'desc')->limit(5)->get();
+
+        return view('frontend.property.property_details', compact('property', 'multiImage', 'property_amenities', 'facility', 'relatedProperty', 'recent_property'));
     } // End Method
 
     public function PropertyMessage(Request $request)

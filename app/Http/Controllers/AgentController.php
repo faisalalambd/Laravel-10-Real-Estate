@@ -74,6 +74,10 @@ class AgentController extends Controller
         $data->email = $request->email;
         $data->phone = $request->phone;
         $data->address = $request->address;
+        $data->facebook = $request->facebook;
+        $data->youtube = $request->youtube;
+        $data->instagram = $request->instagram;
+        $data->linkedin = $request->linkedin;
         $data->description = $request->description;
 
         if ($request->file('photo')) {

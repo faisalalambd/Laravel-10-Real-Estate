@@ -123,7 +123,7 @@
                                             <div class="price-box clearfix">
                                                 <div class="price-info">
                                                     <h6>Start From</h6>
-                                                    <h4>${{ $item->lowest_price }}</h4>
+                                                    <h4>$ {{ number_format($item->lowest_price) }}</h4>
                                                 </div>
                                             </div>
 

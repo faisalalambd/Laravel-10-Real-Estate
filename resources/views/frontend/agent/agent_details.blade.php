@@ -32,42 +32,95 @@
 
 <!-- agent-details -->
 <section class="agent-details">
+
     <div class="auto-container">
+
         <div class="agent-details-content">
+
             <div class="agents-block-one">
+
                 <div class="inner-box mr-0">
-                    <figure class="image-box"><img
-                            src="{{ !empty($agent->photo) ? url('upload/agent_images/' . $agent->photo) : url('upload/no_image.jpg') }}"
+
+                    <figure class="image-box">
+                        <img src="{{ !empty($agent->photo) ? url('upload/agent_images/' . $agent->photo) : url('upload/no_image.jpg') }}"
                             alt="" style="width:270px; height:330px;">
                     </figure>
+
+
                     <div class="content-box">
+
                         <div class="upper clearfix">
+
                             <div class="title-inner pull-left">
                                 <h4>{{ $agent->name }}</h4>
                                 <span class="designation">{{ $agent->username }}</span>
                             </div>
+
+
                             <ul class="social-list pull-right clearfix">
-                                <li><a href="agents-details.html"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="agents-details.html"><i class="fab fa-youtube"></i></a></li>
-                                <li><a href="agents-details.html"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="agents-details.html"><i class="fab fa-linkedin-in"></i></a></li>
+
+                                <li>
+                                    <a href="{{ $agent->facebook }}" target="_blank;">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="{{ $agent->youtube }}" target="_blank;">
+                                        <i class="fab fa-youtube"></i>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="{{ $agent->instagram }}" target="_blank;">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="{{ $agent->linkedin }}" target="_blank;">
+                                        <i class="fab fa-linkedin-in"></i>
+                                    </a>
+                                </li>
+
                             </ul>
+
                         </div>
+
+
                         <div class="text">
                             <p>{!! $agent->description !!}</p>
                         </div>
+
+
                         <ul class="info clearfix mr-0">
-                            <li><i class="fab fa fa-envelope"></i><a
-                                    href="mailto:{{ $agent->email }}">{{ $agent->email }}</a></li>
-                            <li><i class="fab fa fa-phone"></i><a
-                                    href="tel:{{ $agent->phone }}">{{ $agent->phone }}</a>
+
+                            <li>
+                                <i class="fab fa fa-envelope"></i>
+                                <a href="mailto:{{ $agent->email }}">
+                                    {{ $agent->email }}
+                                </a>
                             </li>
+
+                            <li>
+                                <i class="fab fa fa-phone"></i>
+                                <a href="tel:{{ $agent->phone }}">
+                                    {{ $agent->phone }}
+                                </a>
+                            </li>
+
                         </ul>
+
                     </div>
+
                 </div>
+
             </div>
+
         </div>
+
     </div>
+
 </section>
 <!-- agent-details end -->
 
@@ -141,7 +194,7 @@
 
                                                         <div class="price-info pull-left">
                                                             <h6>Start From</h6>
-                                                            <h4>${{ $item->lowest_price }}</h4>
+                                                            <h4>$ {{ number_format($item->lowest_price) }}</h4>
                                                         </div>
 
                                                         @if ($item->agent_id == null)
@@ -383,7 +436,7 @@
                                             <div class="price-box clearfix">
                                                 <div class="price-info">
                                                     <h6>Start From</h6>
-                                                    <h4>${{ $item->lowest_price }}</h4>
+                                                    <h4>$ {{ number_format($item->lowest_price) }}</h4>
                                                 </div>
                                             </div>
 

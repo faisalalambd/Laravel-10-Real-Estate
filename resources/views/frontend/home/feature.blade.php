@@ -75,7 +75,7 @@
 
                                     <div class="price-info pull-left">
                                         <h6>Start From</h6>
-                                        <h4>${{ $item->lowest_price }}</h4>
+                                        <h4>$ {{ number_format($item->lowest_price) }}</h4>
                                     </div>
 
                                     <ul class="other-option pull-right clearfix">

@@ -48,16 +48,27 @@
                         <p class="text-muted">{{ $profileData->address }}</p>
                     </div>
 
+                    <br>
+
                     <div class="mt-3 d-flex social-links">
-                        <a href="javascript:;" class="btn btn-icon border btn-xs me-2">
-                            <i data-feather="github"></i>
+
+                        <a href="{{ $profileData->facebook }}" target="_blank;" class="btn btn-icon border btn-xs me-2">
+                            <i data-feather="facebook"></i>
                         </a>
-                        <a href="javascript:;" class="btn btn-icon border btn-xs me-2">
-                            <i data-feather="twitter"></i>
+
+                        <a href="{{ $profileData->youtube }}" target="_blank;" class="btn btn-icon border btn-xs me-2">
+                            <i data-feather="youtube"></i>
                         </a>
-                        <a href="javascript:;" class="btn btn-icon border btn-xs me-2">
+
+                        <a href="{{ $profileData->instagram }}" target="_blank;"
+                            class="btn btn-icon border btn-xs me-2">
                             <i data-feather="instagram"></i>
                         </a>
+
+                        <a href="{{ $profileData->linkedin }}" target="_blank;" class="btn btn-icon border btn-xs me-2">
+                            <i data-feather="linkedin"></i>
+                        </a>
+
                     </div>
 
                 </div>
@@ -83,51 +94,79 @@
                             enctype="multipart/form-data" autocomplete="off">
                             @csrf
 
-                            <div class="mb-3">
-                                <label class="form-label">Username</label>
-                                <input type="text" name="username" class="form-control"
-                                    value="{{ $profileData->username }}">
-                            </div>
+                            <div class="row">
 
-                            <div class="mb-3">
-                                <label class="form-label">Name</label>
-                                <input type="text" name="name" class="form-control"
-                                    value="{{ $profileData->name }}">
-                            </div>
+                                <div class="col-6 mb-3">
+                                    <label class="form-label">Username</label>
+                                    <input type="text" name="username" class="form-control"
+                                        value="{{ $profileData->username }}">
+                                </div>
 
-                            <div class="mb-3">
-                                <label class="form-label">Email</label>
-                                <input type="email" name="email" class="form-control"
-                                    value="{{ $profileData->email }}">
-                            </div>
+                                <div class="col-6 mb-3">
+                                    <label class="form-label">Name</label>
+                                    <input type="text" name="name" class="form-control"
+                                        value="{{ $profileData->name }}">
+                                </div>
 
-                            <div class="mb-3">
-                                <label class="form-label">Phone</label>
-                                <input type="text" name="phone" class="form-control"
-                                    value="{{ $profileData->phone }}">
-                            </div>
+                                <div class="col-6 mb-3">
+                                    <label class="form-label">Email</label>
+                                    <input type="email" name="email" class="form-control"
+                                        value="{{ $profileData->email }}">
+                                </div>
 
-                            <div class="mb-3">
-                                <label class="form-label">Address</label>
-                                <input type="text" name="address" class="form-control"
-                                    value="{{ $profileData->address }}">
-                            </div>
+                                <div class="col-6 mb-3">
+                                    <label class="form-label">Phone</label>
+                                    <input type="text" name="phone" class="form-control"
+                                        value="{{ $profileData->phone }}">
+                                </div>
 
-                            <div class="mb-3">
-                                <label class="form-label">Description</label>
-                                <textarea class="form-control" name="description" rows="3">{{ $profileData->description }}</textarea>
-                            </div>
+                                <div class="col-12 mb-3">
+                                    <label class="form-label">Address</label>
+                                    <input type="text" name="address" class="form-control"
+                                        value="{{ $profileData->address }}">
+                                </div>
 
-                            <div class="mb-3">
-                                <label class="form-label">Photo </label>
-                                <input class="form-control" name="photo" type="file" id="image">
-                            </div>
+                                <div class="col-6 mb-3">
+                                    <label class="form-label">Facebook</label>
+                                    <input type="text" name="facebook" class="form-control"
+                                        value="{{ $profileData->facebook }}">
+                                </div>
 
-                            <div class="mb-3">
-                                <label class="form-label"> </label>
-                                <img id="showImage" class="wd-80 rounded-circle"
-                                    src="{{ !empty($profileData->photo) ? url('upload/agent_images/' . $profileData->photo) : url('upload/no_image.jpg') }}"
-                                    alt="Agent Profile Image">
+                                <div class="col-6 mb-3">
+                                    <label class="form-label">YouTube</label>
+                                    <input type="text" name="youtube" class="form-control"
+                                        value="{{ $profileData->youtube }}">
+                                </div>
+
+                                <div class="col-6 mb-3">
+                                    <label class="form-label">Instagram</label>
+                                    <input type="text" name="instagram" class="form-control"
+                                        value="{{ $profileData->instagram }}">
+                                </div>
+
+                                <div class="col-6 mb-3">
+                                    <label class="form-label">LinkedIn</label>
+                                    <input type="text" name="linkedin" class="form-control"
+                                        value="{{ $profileData->linkedin }}">
+                                </div>
+
+                                <div class="col-12 mb-3">
+                                    <label class="form-label">Description</label>
+                                    <textarea class="form-control" name="description" rows="3">{{ $profileData->description }}</textarea>
+                                </div>
+
+                                <div class="col-12 mb-3">
+                                    <label class="form-label">Photo </label>
+                                    <input class="form-control" name="photo" type="file" id="image">
+                                </div>
+
+                                <div class="col-12 mb-3">
+                                    <label class="form-label"> </label>
+                                    <img id="showImage" class="wd-80 rounded-circle"
+                                        src="{{ !empty($profileData->photo) ? url('upload/agent_images/' . $profileData->photo) : url('upload/no_image.jpg') }}"
+                                        alt="Agent Profile Image">
+                                </div>
+
                             </div>
 
                             <button type="submit" class="btn btn-outline-primary me-2">Save Changes</button>

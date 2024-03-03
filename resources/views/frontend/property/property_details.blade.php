@@ -41,30 +41,20 @@
 
                 <h3>{{ $property->property_name }}</h3>
 
-                <div class="author-info clearfix">
 
-                    <div class="author-box pull-left">
-                        @if ($property->agent_id == null)
-                            <figure class="author-thumb">
-                                <img src="{{ url('upload/admin.png') }}" alt="">
-                            </figure>
-                            <h6>Admin</h6>
-                        @else
-                            <figure class="author-thumb">
-                                <img src="{{ !empty($property->user->photo) ? url('upload/agent_images/' . $property->user->photo) : url('upload/no_image.jpg') }}"
-                                    alt="">
-                            </figure>
-                            <h6>{{ $property->user->name }}</h6>
-                        @endif
+                <div class="right-column clearfix">
+
+                    <div class="price-inner clearfix">
+
+                        <ul class="category clearfix pull-left">
+
+                            <li><a>{{ $property->propertyType->type_name }}</a></li>
+
+                            <li><a>For {{ $property->property_status }}</a></li>
+
+                        </ul>
+
                     </div>
-
-                    <ul class="rating clearfix pull-left">
-                        <li><i class="icon-39"></i></li>
-                        <li><i class="icon-39"></i></li>
-                        <li><i class="icon-39"></i></li>
-                        <li><i class="icon-39"></i></li>
-                        <li><i class="icon-40"></i></li>
-                    </ul>
 
                 </div>
 
@@ -72,21 +62,36 @@
 
 
             <div class="right-column pull-right clearfix">
+
                 <div class="price-inner clearfix">
-                    <ul class="category clearfix pull-left">
-                        <li><a href="property-details.html">{{ $property->propertyType->type_name }}</a></li>
-                        <li><a href="property-details.html">For {{ $property->property_status }}</a></li>
-                    </ul>
                     <div class="price-box pull-right">
-                        <h3>${{ $property->lowest_price }}</h3>
+                        <h3>$ {{ number_format($property->lowest_price) }}</h3>
                     </div>
                 </div>
+
+
                 <ul class="other-option pull-right clearfix">
-                    <li><a href="property-details.html"><i class="icon-37"></i></a></li>
-                    <li><a href="property-details.html"><i class="icon-38"></i></a></li>
-                    <li><a href="property-details.html"><i class="icon-12"></i></a></li>
-                    <li><a href="property-details.html"><i class="icon-13"></i></a></li>
+
+                    <li><a href="#!"><i class="icon-37"></i></a></li>
+
+                    <li><a href="#!"><i class="icon-38"></i></a></li>
+
+                    <li>
+                        <a aria-label="Compare" class="action-btn" id="{{ $property->id }}"
+                            onclick="addToCompare(this.id)">
+                            <i class="icon-12"></i>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a aria-label="Add To Wishlist" class="action-btn" id="{{ $property->id }}"
+                            onclick="addToWishList(this.id)">
+                            <i class="icon-13"></i>
+                        </a>
+                    </li>
+
                 </ul>
+
             </div>
 
         </div>
@@ -211,17 +216,12 @@
                                     @foreach ($facility as $facilities)
                                         <div class="box clearfix">
                                             <div class="text pull-left">
-                                                <h6>{{ $facilities->facility_name }}
-                                                    <span>({{ $facilities->distance }}
-                                                        km)</span>
-                                                </h6>
+                                                <h6>{{ $facilities->facility_name }}</h6>
                                             </div>
                                             <ul class="rating pull-right clearfix">
-                                                <li><i class="icon-39"></i></li>
-                                                <li><i class="icon-39"></i></li>
-                                                <li><i class="icon-39"></i></li>
-                                                <li><i class="icon-39"></i></li>
-                                                <li><i class="icon-40"></i></li>
+                                                <span>
+                                                    {{ $facilities->distance }} km
+                                                </span>
                                             </ul>
                                         </div>
                                     @endforeach
@@ -325,42 +325,60 @@
                                 <figure class="author-thumb">
                                     <img src="{{ url('upload/admin.png') }}" alt="">
                                 </figure>
+
                                 <div class="inner">
+
                                     <h4>Admin</h4>
+
                                     <ul class="info clearfix">
+
                                         <li>
                                             <i class="fas fa-map-marker-alt"></i>
                                             Dhaka, Bangladesh
                                         </li>
+
                                         <li>
                                             <i class="fas fa-phone"></i>
                                             <a href="tel:03030571965">+8801XXXXXXXXX</a>
                                         </li>
+
                                     </ul>
+
                                     <div class="btn-box">
-                                        <a href="agents-details.html">View Listing</a>
+                                        <a href="#!">View Profile</a>
                                     </div>
+
                                 </div>
                             @else
                                 <figure class="author-thumb">
                                     <img src="{{ !empty($property->user->photo) ? url('upload/agent_images/' . $property->user->photo) : url('upload/no_image.jpg') }}"
                                         alt="">
                                 </figure>
+
                                 <div class="inner">
+
                                     <h4>{{ $property->user->name }}</h4>
+
                                     <ul class="info clearfix">
+
                                         <li>
                                             <i class="fas fa-map-marker-alt"></i>
                                             {{ $property->user->address }}
                                         </li>
+
                                         <li>
                                             <i class="fas fa-phone"></i>
-                                            <a href="tel:03030571965">{{ $property->user->phone }}</a>
+                                            <a href="tel:{{ $property->user->phone }}">
+                                                {{ $property->user->phone }}
+                                            </a>
                                         </li>
+
                                     </ul>
+
                                     <div class="btn-box">
-                                        <a href="agents-details.html">View Listing</a>
+                                        <a href="{{ route('agent.details', $property->id) }}">View Profile</a>
                                     </div>
+
                                 </div>
                             @endif
 
@@ -449,41 +467,68 @@
                     </div>
 
 
-                    <div class="calculator-widget sidebar-widget">
-                        <div class="calculate-inner">
-                            <div class="widget-title">
-                                <h4>Mortgage Calculator</h4>
-                            </div>
-                            <form method="post" action="mortgage-calculator.html" class="default-form">
-                                <div class="form-group">
-                                    <i class="fas fa-dollar-sign"></i>
-                                    <input type="number" name="total_amount" placeholder="Total Amount">
-                                </div>
-                                <div class="form-group">
-                                    <i class="fas fa-dollar-sign"></i>
-                                    <input type="number" name="down_payment" placeholder="Down Payment">
-                                </div>
-                                <div class="form-group">
-                                    <i class="fas fa-percent"></i>
-                                    <input type="number" name="interest_rate" placeholder="Interest Rate">
-                                </div>
-                                <div class="form-group">
-                                    <i class="far fa-calendar-alt"></i>
-                                    <input type="number" name="loan" placeholder="Loan Terms(Years)">
-                                </div>
-                                <div class="form-group">
-                                    <div class="select-box">
-                                        <select class="wide">
-                                            <option data-display="Monthly">Monthly</option>
-                                            <option value="1">Yearly</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group message-btn">
-                                    <button type="submit" class="theme-btn btn-one">Calculate Now</button>
-                                </div>
-                            </form>
+                    <div class="featured-widget sidebar-widget">
+
+                        <div class="widget-title">
+                            <h5>Recent Properties</h5>
                         </div>
+
+                        <div class="single-item-carousel owl-carousel owl-theme owl-nav-none dots-style-one">
+
+                            @foreach ($recent_property as $item)
+                                <div class="feature-block-one">
+
+                                    <div class="inner-box">
+
+                                        <div class="image-box">
+
+                                            <figure class="image">
+                                                <img src="{{ asset($item->property_thumbnail) }}" alt=""
+                                                    style="width:370px; height:250px;">
+                                            </figure>
+
+                                            <div class="batch"><i class="icon-11"></i></div>
+                                            <span class="category">New</span>
+
+                                        </div>
+
+
+                                        <div class="lower-content">
+
+                                            <div class="title-text">
+                                                <h4>
+                                                    <a
+                                                        href="{{ url('property/details/' . $item->id . '/' . $item->property_slug) }}">
+                                                        {{ $item->property_name }}
+                                                    </a>
+                                                </h4>
+                                            </div>
+
+                                            <div class="price-box clearfix">
+                                                <div class="price-info">
+                                                    <h6>Start From</h6>
+                                                    <h4>$ {{ number_format($item->lowest_price) }}</h4>
+                                                </div>
+                                            </div>
+
+                                            <p>{{ $item->short_description }}</p>
+
+                                            <div class="btn-box">
+                                                <a href="{{ url('property/details/' . $item->id . '/' . $item->property_slug) }}"
+                                                    class="theme-btn btn-two">
+                                                    See Details
+                                                </a>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            @endforeach
+
+                        </div>
+
                     </div>
 
                 </div>
@@ -537,7 +582,7 @@
                                         </div>
 
                                         <div class="buy-btn pull-right">
-                                            <a href="property-details.html">
+                                            <a>
                                                 For {{ $item->property_status }}
                                             </a>
                                         </div>
@@ -557,12 +602,25 @@
 
                                         <div class="price-info pull-left">
                                             <h6>Start From</h6>
-                                            <h4>${{ $item->lowest_price }}</h4>
+                                            <h4>$ {{ number_format($item->lowest_price) }}</h4>
                                         </div>
 
                                         <ul class="other-option pull-right clearfix">
-                                            <li><a href="property-details.html"><i class="icon-12"></i></a></li>
-                                            <li><a href="property-details.html"><i class="icon-13"></i></a></li>
+
+                                            <li>
+                                                <a aria-label="Compare" class="action-btn" id="{{ $item->id }}"
+                                                    onclick="addToCompare(this.id)">
+                                                    <i class="icon-12"></i>
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <a aria-label="Add To Wishlist" class="action-btn"
+                                                    id="{{ $item->id }}" onclick="addToWishList(this.id)">
+                                                    <i class="icon-13"></i>
+                                                </a>
+                                            </li>
+
                                         </ul>
 
                                     </div>

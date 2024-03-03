@@ -42,10 +42,31 @@
                                 <span class="designation">{{ $item->email }}</span>
 
                                 <ul class="social-links clearfix">
-                                    <li><a href="index.html"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="index.html"><i class="fab fa-youtube"></i></a></li>
-                                    <li><a href="index.html"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="index.html"><i class="fab fa-google-plus-g"></i></a></li>
+
+                                    <li>
+                                        <a href="{{ $item->facebook }}" target="_blank;">
+                                            <i class="fab fa-facebook-f"></i>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="{{ $item->youtube }}" target="_blank;">
+                                            <i class="fab fa-youtube"></i>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="{{ $item->instagram }}" target="_blank;">
+                                            <i class="fab fa-instagram"></i>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="{{ $item->linkedin }}" target="_blank;">
+                                            <i class="fab fa-linkedin"></i>
+                                        </a>
+                                    </li>
+
                                 </ul>
 
                             </div>
